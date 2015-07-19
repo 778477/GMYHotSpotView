@@ -10,10 +10,12 @@
 		E589344B1B5BA332000265AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344A1B5BA332000265AC /* main.m */; };
 		E589344E1B5BA332000265AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344D1B5BA332000265AC /* AppDelegate.m */; };
 		E58934511B5BA332000265AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934501B5BA332000265AC /* ViewController.m */; };
-		E58934541B5BA332000265AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E58934521B5BA332000265AC /* Main.storyboard */; };
 		E58934561B5BA332000265AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E58934551B5BA332000265AC /* Images.xcassets */; };
 		E58934591B5BA332000265AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58934571B5BA332000265AC /* LaunchScreen.xib */; };
 		E58934651B5BA332000265AC /* GMYHotSpotViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */; };
+		E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */; };
+		E58934761B5BA655000265AC /* GMYHotSpotViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934751B5BA655000265AC /* GMYHotSpotViewLayout.m */; };
+		E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +36,18 @@
 		E589344D1B5BA332000265AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E589344F1B5BA332000265AC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E58934501B5BA332000265AC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E58934531B5BA332000265AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E58934551B5BA332000265AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E58934581B5BA332000265AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E589345E1B5BA332000265AC /* GMYHotSpotViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMYHotSpotViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934631B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewTests.m; sourceTree = "<group>"; };
+		E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotView.h; sourceTree = "<group>"; };
+		E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotView.m; sourceTree = "<group>"; };
+		E58934741B5BA655000265AC /* GMYHotSpotViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewLayout.h; sourceTree = "<group>"; };
+		E58934751B5BA655000265AC /* GMYHotSpotViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewLayout.m; sourceTree = "<group>"; };
+		E589347B1B5BA724000265AC /* GMYHotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpot.h; sourceTree = "<group>"; };
+		E589347F1B5BA9B9000265AC /* UIDevice+iOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+iOSVersion.h"; sourceTree = "<group>"; };
+		E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+iOSVersion.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +91,18 @@
 			children = (
 				E589344C1B5BA332000265AC /* AppDelegate.h */,
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
-				E589344F1B5BA332000265AC /* ViewController.h */,
-				E58934501B5BA332000265AC /* ViewController.m */,
-				E58934521B5BA332000265AC /* Main.storyboard */,
+				E589347F1B5BA9B9000265AC /* UIDevice+iOSVersion.h */,
+				E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */,
+				E589347B1B5BA724000265AC /* GMYHotSpot.h */,
+				E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */,
+				E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */,
+				E58934741B5BA655000265AC /* GMYHotSpotViewLayout.h */,
+				E58934751B5BA655000265AC /* GMYHotSpotViewLayout.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
 				E58934571B5BA332000265AC /* LaunchScreen.xib */,
 				E58934481B5BA332000265AC /* Supporting Files */,
+				E589344F1B5BA332000265AC /* ViewController.h */,
+				E58934501B5BA332000265AC /* ViewController.m */,
 			);
 			path = GMYHotSpotView;
 			sourceTree = "<group>";
@@ -199,7 +213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58934541B5BA332000265AC /* Main.storyboard in Resources */,
 				E58934591B5BA332000265AC /* LaunchScreen.xib in Resources */,
 				E58934561B5BA332000265AC /* Images.xcassets in Resources */,
 			);
@@ -219,7 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */,
 				E58934511B5BA332000265AC /* ViewController.m in Sources */,
+				E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */,
+				E58934761B5BA655000265AC /* GMYHotSpotViewLayout.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
 			);
@@ -244,14 +260,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E58934521B5BA332000265AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E58934531B5BA332000265AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E58934571B5BA332000265AC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

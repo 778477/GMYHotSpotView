@@ -7,21 +7,37 @@
 //
 
 #import "ViewController.h"
-
+#import "GMYHotSpotView.h"
+#import "UIDevice+iOSVersion.h"
 @interface ViewController ()
-
+@property (nonatomic, strong) GMYHotSpotView *hotspotView;
 @end
 
 @implementation ViewController
+#pragma mark -
+#pragma mark - life cycle
+- (instancetype)init{
+    if(self = [super init]){
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview:self.hotspotView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark -
+- (GMYHotSpotView *)hotspotView{
+    if(!_hotspotView){
+        CGFloat yOffset = [[UIDevice currentDevice] systemVersionGeraterThanOrEqualTo:@"7.0"] ? 20.f :0.f;
+        _hotspotView = [[GMYHotSpotView alloc] initWithFrame:CGRectMake(0, yOffset, self.view.frame.size.width, self.view.frame.size.height/2)];
+        
+        _hotspotView.backgroundColor = [UIColor blueColor];
+    }
+    return _hotspotView;
 }
-
 @end
