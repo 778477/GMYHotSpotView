@@ -7,16 +7,29 @@
 //
 
 #import "GMYHotSpotView.h"
+#import "GMYHotSpotViewLayout.h"
+#import "GMYHotSpotViewNormalLayout.h"
+@interface GMYHotSpotView(){
+    NSMutableArray *hotSpotBtns;
+    id<GMYHotSpotViewLayout> _hotspotViewLayout;
+}
+@end
 
 @implementation GMYHotSpotView
 #pragma mark - life cycle
-- (instancetype)init{
-    if(self = [super init]){
-        
+- (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout{
+    if(self =[super initWithFrame:frame]){
+        _hotspotViewLayout = layout;
+        _hotspotViewLayout.hotspotView = self;
     }
     return self;
 }
 
-#pragma mark -
+#pragma mark - Public Method
+- (void)updateHotSpotWithArray:(NSArray *)hotspots{
+    
+}
+
+#pragma mark - Private Mathod
 
 @end

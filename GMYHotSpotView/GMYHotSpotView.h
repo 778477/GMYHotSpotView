@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol GMYHotSpotViewLayout;
 @interface GMYHotSpotView : UIView
-
+- (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
+- (void)updateHotSpotWithArray:(NSArray *)hotspots;
 @end
 

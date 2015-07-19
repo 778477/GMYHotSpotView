@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "GMYHotSpotView.h"
+#import "GMYHotSpotViewNormalLayout.h"
 #import "UIDevice+iOSVersion.h"
 @interface ViewController ()
 @property (nonatomic, strong) GMYHotSpotView *hotspotView;
@@ -29,12 +30,11 @@
     
     [self.view addSubview:self.hotspotView];
 }
-
 #pragma mark -
 - (GMYHotSpotView *)hotspotView{
     if(!_hotspotView){
         CGFloat yOffset = [[UIDevice currentDevice] systemVersionGeraterThanOrEqualTo:@"7.0"] ? 20.f :0.f;
-        _hotspotView = [[GMYHotSpotView alloc] initWithFrame:CGRectMake(0, yOffset, self.view.frame.size.width, self.view.frame.size.height/2)];
+        _hotspotView = [[GMYHotSpotView alloc] initWithFrame:CGRectMake(0, yOffset, self.view.frame.size.width, self.view.frame.size.height/2) hotspotViewLayout:[GMYHotSpotViewNormalLayout new]];
         
         _hotspotView.backgroundColor = [UIColor blueColor];
     }

@@ -1,5 +1,5 @@
 //
-//  GMYHotSpotViewLayout.h
+//  GMYHotSpotViewNormalLayout.h
 //  GMYHotSpotView
 //
 //  Created by 郭妙友 on 15/7/19.
@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class GMYHotSpotView;
-@protocol GMYHotSpotViewLayout <NSObject>
-@required
-@property (nonatomic, weak) GMYHotSpotView *hotspotView;
+#import "GMYHotSpotViewLayout.h"
+@interface GMYHotSpotViewNormalLayout : NSObject<GMYHotSpotViewLayout>
+
 @end
