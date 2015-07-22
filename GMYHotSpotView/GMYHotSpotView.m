@@ -10,7 +10,7 @@
 #import "GMYHotSpotViewLayout.h"
 #import "GMYHotSpotViewNormalLayout.h"
 @interface GMYHotSpotView(){
-    NSMutableArray *hotSpotBtns;
+    NSMutableArray *_hotspots;
     id<GMYHotSpotViewLayout> _hotspotViewLayout;
 }
 @end
@@ -26,10 +26,17 @@
 }
 
 #pragma mark - Public Method
-- (void)updateHotSpotWithArray:(NSArray *)hotspots{
-    
+- (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
+    [self p_clean];
+    _hotspots = [hotspots copy];
+    _clickHandle = clickHandle;
+    [_hotspotViewLayout layoutHotSpotView:hotspots];
 }
 
+
 #pragma mark - Private Mathod
+- (void)p_clean{
+    [_hotspots removeAllObjects];
+}
 
 @end

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @protocol GMYHotSpotViewLayout;
+
+typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
+
 @interface GMYHotSpotView : UIView
+@property (nonatomic, copy) HotspotClickHandle clickHandle;
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
-- (void)updateHotSpotWithArray:(NSArray *)hotspots;
+- (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle;
 @end
 

@@ -10,6 +10,4 @@
 
 @protocol GMYHotSpot <NSObject>
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) BOOL isSelected;
-@property (nonatomic, assign) NSInteger line;
 @end

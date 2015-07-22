@@ -11,4 +11,5 @@
 @protocol GMYHotSpotViewLayout <NSObject>
 @required
 @property (nonatomic, weak) GMYHotSpotView *hotspotView;
+- (void)layoutHotSpotView:(NSArray *)hotspots;
 @end
