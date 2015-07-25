@@ -10,4 +10,5 @@
 
 @protocol GMYHotSpot <NSObject>
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, assign) NSInteger line;
 @end

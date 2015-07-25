@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 @class GMYHotSpotView;
+typedef void(^eachLineCompletion)(NSInteger line,NSArray *fixedHotspots);
 @protocol GMYHotSpotViewLayout <NSObject>
 @required
 @property (nonatomic, weak) GMYHotSpotView *hotspotView;
-- (void)layoutHotSpotView:(NSArray *)hotspots;
+- (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion;
 @end

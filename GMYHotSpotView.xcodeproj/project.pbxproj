@@ -16,6 +16,7 @@
 		E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */; };
 		E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */; };
 		E589348B1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */; };
+		E5FE12131B63AE4200D6CAC0 /* GMYHotSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		E58934891B5BC605000265AC /* GMYHotSpotViewNormalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewNormalLayout.h; sourceTree = "<group>"; };
 		E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewNormalLayout.m; sourceTree = "<group>"; };
 		E589348F1B5BC677000265AC /* GMYHotSpotViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewLayout.h; sourceTree = "<group>"; };
+		E5FE12111B63AE4200D6CAC0 /* GMYHotSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotModel.h; sourceTree = "<group>"; };
+		E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				E589344C1B5BA332000265AC /* AppDelegate.h */,
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
 				E589347B1B5BA724000265AC /* GMYHotSpot.h */,
+				E5FE12111B63AE4200D6CAC0 /* GMYHotSpotModel.h */,
+				E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */,
 				E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */,
 				E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
@@ -254,6 +259,7 @@
 				E58934511B5BA332000265AC /* ViewController.m in Sources */,
 				E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */,
 				E589348B1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m in Sources */,
+				E5FE12131B63AE4200D6CAC0 /* GMYHotSpotModel.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
 			);

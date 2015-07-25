@@ -7,8 +7,10 @@
 //
 
 #import "GMYHotSpotView.h"
+#import "GMYHotSpot.h"
 #import "GMYHotSpotViewLayout.h"
 #import "GMYHotSpotViewNormalLayout.h"
+static const NSInteger tagBaseIndex = 101;
 @interface GMYHotSpotView(){
     NSMutableArray *_hotspots;
     id<GMYHotSpotViewLayout> _hotspotViewLayout;
@@ -21,6 +23,15 @@
     if(self =[super initWithFrame:frame]){
         _hotspotViewLayout = layout;
         _hotspotViewLayout.hotspotView = self;
+        
+        self.fontSize = 14.f;
+        self.buttonHeight = 20.f;
+        self.buttonWidth = 70.f;
+        self.minimumInteritemSpacing = 5.f;
+        self.minimumLineSpacing = 5.f;
+        self.titleSpace = 15.f;
+        
+        self.maxLines = 4;
     }
     return self;
 }
@@ -30,11 +41,48 @@
     [self p_clean];
     _hotspots = [hotspots copy];
     _clickHandle = clickHandle;
-    [_hotspotViewLayout layoutHotSpotView:hotspots];
+    NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
+    
+    [_hotspotViewLayout layoutHotSpotView:hotspots eachLineCompletion:^(NSInteger line, NSArray *fixedHotspots) {
+        if (line < self.maxLines) {
+            [self layoutHotspots:fixedHotspots];
+        }
+    }];
+    
+    CGRect frame = self.frame;
+    frame.size.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
+    self.frame = frame;
 }
 
 
+- (void)layoutHotspots:(NSArray *)hotspots{
+    __block  CGFloat xOffset = 0.f;
+    [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
+        UIButton *button = [[UIButton alloc] init];
+        
+        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
+        
+        
+        button.frame = CGRectMake(xOffset, _minimumLineSpacing*MAX(0, obj.line) + obj.line*_buttonHeight, textSize.width + 2*_titleSpace, _buttonHeight);
+        button.layer.borderWidth = 0.5f;
+        button.layer.borderColor =[UIColor grayColor].CGColor;
+        button.layer.cornerRadius = 2.f;
+        button.titleLabel.font = [UIFont systemFontOfSize:_fontSize];
+        [button setTitle:obj.title forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(clickHotspot:) forControlEvents:UIControlEventTouchUpInside];
+        button.tag = tagBaseIndex + [_hotspots indexOfObject:obj];
+        [self addSubview:button];
+        xOffset += (button.frame.size.width + _minimumInteritemSpacing);
+    }];
+}
 #pragma mark - Private Mathod
+- (void)clickHotspot:(UIButton *)sender{
+    if(_clickHandle){
+        id<GMYHotSpot> spot = _hotspots[sender.tag - tagBaseIndex];
+        _clickHandle(sender.tag - tagBaseIndex, spot.title);
+    }
+}
 - (void)p_clean{
     [_hotspots removeAllObjects];
 }
