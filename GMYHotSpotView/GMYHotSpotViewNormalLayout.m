@@ -11,20 +11,7 @@
 #import "GMYHotSpot.h"
 @implementation GMYHotSpotViewNormalLayout
 @synthesize hotspotView = _hotspotView;
-#pragma mark - life cycle
-- (instancetype)init{
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
-
-
--(void)dealloc{
-    
-}
-#pragma mark - override
-
+#pragma mark - Override
 - (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion{
     NSMutableArray *models = [NSMutableArray arrayWithArray:hotspots];
     NSMutableArray *fixedModels = [[NSMutableArray alloc] initWithCapacity:3];
@@ -36,7 +23,12 @@
         lineTotalWidth = 0.f;
         for(NSInteger i=0;i<modelCount;i++){
             id<GMYHotSpot> spot = models[i];
-            CGSize textSize = [spot.title boundingRectWithSize:CGSizeMake(limitWidth, _hotspotView.buttonHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_hotspotView.fontSize]} context:nil].size;
+            
+            CGSize textSize = [spot.title boundingRectWithSize:CGSizeMake(limitWidth, _hotspotView.buttonHeight)
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_hotspotView.fontSize]}
+                                                       context:nil].size;
+            
             CGFloat itemSpace = MAX(0, fixedModels.count)*self.hotspotView.minimumInteritemSpacing;
             if(textSize.width + lineTotalWidth + itemSpace + 2*_hotspotView.titleSpace> limitWidth){
                 break;
@@ -47,7 +39,7 @@
         }
         completion(line,fixedModels);
         line++;
-        modelCount -= fixedModels.count;
+        modelCount -= (fixedModels.count);
         [models removeObjectsInArray:fixedModels];
         [fixedModels removeAllObjects];
     }
