@@ -10,6 +10,8 @@
 #import "GMYHotSpot.h"
 #import "GMYHotSpotViewLayout.h"
 #import "GMYHotSpotViewNormalLayout.h"
+#import "UIView+EX.h"
+
 static const NSInteger tagBaseIndex = 101;
 @interface GMYHotSpotView(){
     NSMutableArray *_hotspots;
@@ -49,9 +51,7 @@ static const NSInteger tagBaseIndex = 101;
         }
     }];
     
-    CGRect frame = self.frame;
-    frame.size.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
-    self.frame = frame;
+    self.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
 }
 
 
