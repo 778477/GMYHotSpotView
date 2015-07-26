@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5094D091B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */; };
+		E5094D0C1B64D26900586CBB /* UIView+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = E5094D0B1B64D26900586CBB /* UIView+EX.m */; };
 		E589344B1B5BA332000265AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344A1B5BA332000265AC /* main.m */; };
 		E589344E1B5BA332000265AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344D1B5BA332000265AC /* AppDelegate.m */; };
 		E58934511B5BA332000265AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934501B5BA332000265AC /* ViewController.m */; };
@@ -30,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5094D071B64CEB700586CBB /* GMYHotSpotViewBetterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewBetterLayout.h; sourceTree = "<group>"; };
+		E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewBetterLayout.m; sourceTree = "<group>"; };
+		E5094D0A1B64D26900586CBB /* UIView+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EX.h"; sourceTree = "<group>"; };
+		E5094D0B1B64D26900586CBB /* UIView+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EX.m"; sourceTree = "<group>"; };
 		E58934451B5BA332000265AC /* GMYHotSpotView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMYHotSpotView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934491B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E589344A1B5BA332000265AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		E58934901B5BCBE9000265AC /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				E5094D071B64CEB700586CBB /* GMYHotSpotViewBetterLayout.h */,
+				E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */,
 				E589348F1B5BC677000265AC /* GMYHotSpotViewLayout.h */,
 				E58934891B5BC605000265AC /* GMYHotSpotViewNormalLayout.h */,
 				E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */,
@@ -150,6 +158,8 @@
 		E58934911B5BCC00000265AC /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E5094D0A1B64D26900586CBB /* UIView+EX.h */,
+				E5094D0B1B64D26900586CBB /* UIView+EX.m */,
 				E589347F1B5BA9B9000265AC /* UIDevice+iOSVersion.h */,
 				E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */,
 			);
@@ -259,6 +269,8 @@
 				E58934511B5BA332000265AC /* ViewController.m in Sources */,
 				E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */,
 				E589348B1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m in Sources */,
+				E5094D0C1B64D26900586CBB /* UIView+EX.m in Sources */,
+				E5094D091B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m in Sources */,
 				E5FE12131B63AE4200D6CAC0 /* GMYHotSpotModel.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
