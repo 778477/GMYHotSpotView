@@ -33,7 +33,7 @@ static const NSInteger tagBaseIndex = 101;
         self.minimumLineSpacing = 5.f;
         self.titleSpace = 15.f;
         
-        self.maxLines = 4;
+        self.maxLines = INT32_MAX;
     }
     return self;
 }
@@ -43,10 +43,11 @@ static const NSInteger tagBaseIndex = 101;
     [self p_clean];
     _hotspots = [hotspots copy];
     _clickHandle = clickHandle;
-    NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
+    __block NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
     
     [_hotspotViewLayout layoutHotSpotView:hotspots eachLineCompletion:^(NSInteger line, NSArray *fixedHotspots) {
         if (line < self.maxLines) {
+            finalLines = line + 1;
             [self layoutHotspots:fixedHotspots];
         }
     }];
