@@ -30,7 +30,7 @@
                                                        context:nil].size;
             
             CGFloat itemSpace = MAX(0, fixedModels.count)*self.hotspotView.minimumInteritemSpacing;
-            if(textSize.width + lineTotalWidth + itemSpace + 2*_hotspotView.titleSpace> limitWidth){
+            if(textSize.width + lineTotalWidth + itemSpace + 2*_hotspotView.titleSpace > limitWidth){
                 break;
             }
             spot.line = line;
