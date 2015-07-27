@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5094D091B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */; };
-		E5094D0C1B64D26900586CBB /* UIView+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = E5094D0B1B64D26900586CBB /* UIView+EX.m */; };
 		E589344B1B5BA332000265AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344A1B5BA332000265AC /* main.m */; };
 		E589344E1B5BA332000265AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344D1B5BA332000265AC /* AppDelegate.m */; };
 		E58934511B5BA332000265AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934501B5BA332000265AC /* ViewController.m */; };
@@ -16,9 +14,11 @@
 		E58934591B5BA332000265AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58934571B5BA332000265AC /* LaunchScreen.xib */; };
 		E58934651B5BA332000265AC /* GMYHotSpotViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */; };
 		E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */; };
-		E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */; };
-		E589348B1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */; };
-		E5FE12131B63AE4200D6CAC0 /* GMYHotSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */; };
+		E5A44A951B6660FD005BDB77 /* UIView+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A911B6660FD005BDB77 /* UIView+EX.m */; };
+		E5A44A961B6660FD005BDB77 /* UIDevice+iOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */; };
+		E5A44A9C1B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */; };
+		E5A44A9D1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */; };
+		E5A44AA21B6661B4005BDB77 /* GMYHotSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,10 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E5094D071B64CEB700586CBB /* GMYHotSpotViewBetterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewBetterLayout.h; sourceTree = "<group>"; };
-		E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewBetterLayout.m; sourceTree = "<group>"; };
-		E5094D0A1B64D26900586CBB /* UIView+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EX.h"; sourceTree = "<group>"; };
-		E5094D0B1B64D26900586CBB /* UIView+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EX.m"; sourceTree = "<group>"; };
 		E58934451B5BA332000265AC /* GMYHotSpotView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMYHotSpotView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934491B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E589344A1B5BA332000265AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,14 +46,18 @@
 		E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewTests.m; sourceTree = "<group>"; };
 		E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotView.h; sourceTree = "<group>"; };
 		E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotView.m; sourceTree = "<group>"; };
-		E589347B1B5BA724000265AC /* GMYHotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpot.h; sourceTree = "<group>"; };
-		E589347F1B5BA9B9000265AC /* UIDevice+iOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+iOSVersion.h"; sourceTree = "<group>"; };
-		E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+iOSVersion.m"; sourceTree = "<group>"; };
-		E58934891B5BC605000265AC /* GMYHotSpotViewNormalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewNormalLayout.h; sourceTree = "<group>"; };
-		E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewNormalLayout.m; sourceTree = "<group>"; };
-		E589348F1B5BC677000265AC /* GMYHotSpotViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotViewLayout.h; sourceTree = "<group>"; };
-		E5FE12111B63AE4200D6CAC0 /* GMYHotSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotModel.h; sourceTree = "<group>"; };
-		E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotModel.m; sourceTree = "<group>"; };
+		E5A44A911B6660FD005BDB77 /* UIView+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EX.m"; path = "category/UIView+EX.m"; sourceTree = "<group>"; };
+		E5A44A921B6660FD005BDB77 /* UIView+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EX.h"; path = "category/UIView+EX.h"; sourceTree = "<group>"; };
+		E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+iOSVersion.m"; path = "category/UIDevice+iOSVersion.m"; sourceTree = "<group>"; };
+		E5A44A941B6660FD005BDB77 /* UIDevice+iOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+iOSVersion.h"; path = "category/UIDevice+iOSVersion.h"; sourceTree = "<group>"; };
+		E5A44A971B66610A005BDB77 /* GMYHotSpotViewBetterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewBetterLayout.h; path = layout/GMYHotSpotViewBetterLayout.h; sourceTree = "<group>"; };
+		E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMYHotSpotViewBetterLayout.m; path = layout/GMYHotSpotViewBetterLayout.m; sourceTree = "<group>"; };
+		E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMYHotSpotViewNormalLayout.m; path = layout/GMYHotSpotViewNormalLayout.m; sourceTree = "<group>"; };
+		E5A44A9A1B66610A005BDB77 /* GMYHotSpotViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewLayout.h; path = layout/GMYHotSpotViewLayout.h; sourceTree = "<group>"; };
+		E5A44A9B1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewNormalLayout.h; path = layout/GMYHotSpotViewNormalLayout.h; sourceTree = "<group>"; };
+		E5A44A9F1B6661B4005BDB77 /* GMYHotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpot.h; sourceTree = "<group>"; };
+		E5A44AA01B6661B4005BDB77 /* GMYHotSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotModel.h; sourceTree = "<group>"; };
+		E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,11 @@
 		E58934471B5BA332000265AC /* GMYHotSpotView */ = {
 			isa = PBXGroup;
 			children = (
+				E5A44A9E1B6661B4005BDB77 /* Model */,
 				E58934911B5BCC00000265AC /* Category */,
 				E58934901B5BCBE9000265AC /* Layout */,
 				E589344C1B5BA332000265AC /* AppDelegate.h */,
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
-				E589347B1B5BA724000265AC /* GMYHotSpot.h */,
-				E5FE12111B63AE4200D6CAC0 /* GMYHotSpotModel.h */,
-				E5FE12121B63AE4200D6CAC0 /* GMYHotSpotModel.m */,
 				E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */,
 				E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
@@ -146,11 +144,11 @@
 		E58934901B5BCBE9000265AC /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				E5094D071B64CEB700586CBB /* GMYHotSpotViewBetterLayout.h */,
-				E5094D081B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m */,
-				E589348F1B5BC677000265AC /* GMYHotSpotViewLayout.h */,
-				E58934891B5BC605000265AC /* GMYHotSpotViewNormalLayout.h */,
-				E589348A1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m */,
+				E5A44A971B66610A005BDB77 /* GMYHotSpotViewBetterLayout.h */,
+				E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */,
+				E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */,
+				E5A44A9A1B66610A005BDB77 /* GMYHotSpotViewLayout.h */,
+				E5A44A9B1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.h */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -158,12 +156,22 @@
 		E58934911B5BCC00000265AC /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				E5094D0A1B64D26900586CBB /* UIView+EX.h */,
-				E5094D0B1B64D26900586CBB /* UIView+EX.m */,
-				E589347F1B5BA9B9000265AC /* UIDevice+iOSVersion.h */,
-				E58934801B5BA9B9000265AC /* UIDevice+iOSVersion.m */,
+				E5A44A911B6660FD005BDB77 /* UIView+EX.m */,
+				E5A44A921B6660FD005BDB77 /* UIView+EX.h */,
+				E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */,
+				E5A44A941B6660FD005BDB77 /* UIDevice+iOSVersion.h */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		E5A44A9E1B6661B4005BDB77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5A44A9F1B6661B4005BDB77 /* GMYHotSpot.h */,
+				E5A44AA01B6661B4005BDB77 /* GMYHotSpotModel.h */,
+				E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,13 +274,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */,
+				E5A44A951B6660FD005BDB77 /* UIView+EX.m in Sources */,
 				E58934511B5BA332000265AC /* ViewController.m in Sources */,
-				E58934811B5BA9B9000265AC /* UIDevice+iOSVersion.m in Sources */,
-				E589348B1B5BC605000265AC /* GMYHotSpotViewNormalLayout.m in Sources */,
-				E5094D0C1B64D26900586CBB /* UIView+EX.m in Sources */,
-				E5094D091B64CEB700586CBB /* GMYHotSpotViewBetterLayout.m in Sources */,
-				E5FE12131B63AE4200D6CAC0 /* GMYHotSpotModel.m in Sources */,
+				E5A44A9C1B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
+				E5A44AA21B6661B4005BDB77 /* GMYHotSpotModel.m in Sources */,
+				E5A44A9D1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m in Sources */,
+				E5A44A961B6660FD005BDB77 /* UIDevice+iOSVersion.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

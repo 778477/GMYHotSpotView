@@ -46,7 +46,6 @@
  */
 - (NSArray *)adjustHotspotsSort:(NSArray *)hotspots limitWidth:(CGFloat)limitWidth{
     NSMutableArray *ans = [[NSMutableArray alloc] initWithCapacity:5];
-    
     /**
      *  CGfloat to int64_t lost accuracy
      */
@@ -66,10 +65,6 @@
     
     }];
     
-  
-//    for(int i=0;i<n;i++){
-//        NSLog(@"%d - %lld",i, value[i]);
-//    }
     bool path[n][v];   // mark the path
     bool flag = false; // mark the first object,becase the first not need itemspace [hotspot1] -> itemSpace<- [hotspot2]
     memset(dp, 0,  2 * v * sizeof(int64_t));
@@ -90,13 +85,9 @@
             }
         }
     }
-//    NSLog(@"%lld\n",dp[v]);
-    
-    
     int64_t i = n - 1, j = v;
     while(i>-1 && j >-1){
         if(path[i][j]){
-//            NSLog(@"Select %lld and value is %lld",i,value[i]);
             j = j - weight[i] - itemspace;
             [ans addObject:hotspots[i]];
         }
