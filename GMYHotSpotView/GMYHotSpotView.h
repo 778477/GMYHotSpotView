@@ -25,7 +25,7 @@ typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
  */
 @property (nonatomic, assign) CGFloat buttonHeight;
 /**
- *  按钮两行之间的巨鹿
+ *  按钮两行之间的距离
  */
 @property (nonatomic, assign) CGFloat minimumLineSpacing;
 /**
