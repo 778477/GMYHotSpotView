@@ -7,18 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		385116AB955BBEDE9CA0CC61 /* libPods-GMYHotSpotView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */; };
 		E589344B1B5BA332000265AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344A1B5BA332000265AC /* main.m */; };
 		E589344E1B5BA332000265AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344D1B5BA332000265AC /* AppDelegate.m */; };
 		E58934511B5BA332000265AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934501B5BA332000265AC /* ViewController.m */; };
 		E58934561B5BA332000265AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E58934551B5BA332000265AC /* Images.xcassets */; };
 		E58934591B5BA332000265AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58934571B5BA332000265AC /* LaunchScreen.xib */; };
 		E58934651B5BA332000265AC /* GMYHotSpotViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */; };
-		E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */; };
-		E5A44A951B6660FD005BDB77 /* UIView+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A911B6660FD005BDB77 /* UIView+EX.m */; };
-		E5A44A961B6660FD005BDB77 /* UIDevice+iOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */; };
-		E5A44A9C1B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */; };
-		E5A44A9D1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */; };
-		E5A44AA21B6661B4005BDB77 /* GMYHotSpotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GMYHotSpotView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMYHotSpotView.release.xcconfig"; path = "Pods/Target Support Files/Pods-GMYHotSpotView/Pods-GMYHotSpotView.release.xcconfig"; sourceTree = "<group>"; };
+		8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMYHotSpotView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GMYHotSpotView/Pods-GMYHotSpotView.debug.xcconfig"; sourceTree = "<group>"; };
 		E58934451B5BA332000265AC /* GMYHotSpotView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMYHotSpotView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934491B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E589344A1B5BA332000265AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,20 +42,6 @@
 		E589345E1B5BA332000265AC /* GMYHotSpotViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMYHotSpotViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934631B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewTests.m; sourceTree = "<group>"; };
-		E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotView.h; sourceTree = "<group>"; };
-		E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotView.m; sourceTree = "<group>"; };
-		E5A44A911B6660FD005BDB77 /* UIView+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EX.m"; path = "category/UIView+EX.m"; sourceTree = "<group>"; };
-		E5A44A921B6660FD005BDB77 /* UIView+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EX.h"; path = "category/UIView+EX.h"; sourceTree = "<group>"; };
-		E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+iOSVersion.m"; path = "category/UIDevice+iOSVersion.m"; sourceTree = "<group>"; };
-		E5A44A941B6660FD005BDB77 /* UIDevice+iOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+iOSVersion.h"; path = "category/UIDevice+iOSVersion.h"; sourceTree = "<group>"; };
-		E5A44A971B66610A005BDB77 /* GMYHotSpotViewBetterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewBetterLayout.h; path = layout/GMYHotSpotViewBetterLayout.h; sourceTree = "<group>"; };
-		E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMYHotSpotViewBetterLayout.m; path = layout/GMYHotSpotViewBetterLayout.m; sourceTree = "<group>"; };
-		E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMYHotSpotViewNormalLayout.m; path = layout/GMYHotSpotViewNormalLayout.m; sourceTree = "<group>"; };
-		E5A44A9A1B66610A005BDB77 /* GMYHotSpotViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewLayout.h; path = layout/GMYHotSpotViewLayout.h; sourceTree = "<group>"; };
-		E5A44A9B1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMYHotSpotViewNormalLayout.h; path = layout/GMYHotSpotViewNormalLayout.h; sourceTree = "<group>"; };
-		E5A44A9F1B6661B4005BDB77 /* GMYHotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpot.h; sourceTree = "<group>"; };
-		E5A44AA01B6661B4005BDB77 /* GMYHotSpotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMYHotSpotModel.h; sourceTree = "<group>"; };
-		E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385116AB955BBEDE9CA0CC61 /* libPods-GMYHotSpotView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +63,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D2C5D7E645A086506DCFC67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */,
+				43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A9F2EF0409724B86C880C607 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E589343C1B5BA332000265AC = {
 			isa = PBXGroup;
 			children = (
 				E58934471B5BA332000265AC /* GMYHotSpotView */,
 				E58934611B5BA332000265AC /* GMYHotSpotViewTests */,
 				E58934461B5BA332000265AC /* Products */,
+				1D2C5D7E645A086506DCFC67 /* Pods */,
+				A9F2EF0409724B86C880C607 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +103,8 @@
 		E58934471B5BA332000265AC /* GMYHotSpotView */ = {
 			isa = PBXGroup;
 			children = (
-				E5A44A9E1B6661B4005BDB77 /* Model */,
-				E58934911B5BCC00000265AC /* Category */,
-				E58934901B5BCBE9000265AC /* Layout */,
 				E589344C1B5BA332000265AC /* AppDelegate.h */,
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
-				E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */,
-				E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */,
 				E589344F1B5BA332000265AC /* ViewController.h */,
 				E58934501B5BA332000265AC /* ViewController.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
@@ -141,39 +140,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E58934901B5BCBE9000265AC /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				E5A44A971B66610A005BDB77 /* GMYHotSpotViewBetterLayout.h */,
-				E5A44A981B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m */,
-				E5A44A991B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m */,
-				E5A44A9A1B66610A005BDB77 /* GMYHotSpotViewLayout.h */,
-				E5A44A9B1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.h */,
-			);
-			name = Layout;
-			sourceTree = "<group>";
-		};
-		E58934911B5BCC00000265AC /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				E5A44A911B6660FD005BDB77 /* UIView+EX.m */,
-				E5A44A921B6660FD005BDB77 /* UIView+EX.h */,
-				E5A44A931B6660FD005BDB77 /* UIDevice+iOSVersion.m */,
-				E5A44A941B6660FD005BDB77 /* UIDevice+iOSVersion.h */,
-			);
-			name = Category;
-			sourceTree = "<group>";
-		};
-		E5A44A9E1B6661B4005BDB77 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E5A44A9F1B6661B4005BDB77 /* GMYHotSpot.h */,
-				E5A44AA01B6661B4005BDB77 /* GMYHotSpotModel.h */,
-				E5A44AA11B6661B4005BDB77 /* GMYHotSpotModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E58934681B5BA332000265AC /* Build configuration list for PBXNativeTarget "GMYHotSpotView" */;
 			buildPhases = (
+				DE26B41F9301B65E0AA014D6 /* Check Pods Manifest.lock */,
 				E58934411B5BA332000265AC /* Sources */,
 				E58934421B5BA332000265AC /* Frameworks */,
 				E58934431B5BA332000265AC /* Resources */,
+				85CE5D0BD61CADB7A051B2EF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,19 +236,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		85CE5D0BD61CADB7A051B2EF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GMYHotSpotView/Pods-GMYHotSpotView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE26B41F9301B65E0AA014D6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E58934411B5BA332000265AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58934701B5BA4E5000265AC /* GMYHotSpotView.m in Sources */,
-				E5A44A951B6660FD005BDB77 /* UIView+EX.m in Sources */,
 				E58934511B5BA332000265AC /* ViewController.m in Sources */,
-				E5A44A9C1B66610A005BDB77 /* GMYHotSpotViewBetterLayout.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
-				E5A44AA21B6661B4005BDB77 /* GMYHotSpotModel.m in Sources */,
-				E5A44A9D1B66610A005BDB77 /* GMYHotSpotViewNormalLayout.m in Sources */,
-				E5A44A961B6660FD005BDB77 /* UIDevice+iOSVersion.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +392,7 @@
 		};
 		E58934691B5BA332000265AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -409,6 +405,7 @@
 		};
 		E589346A1B5BA332000265AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -1,0 +1,1 @@
+../../../GMYHotSpotView/GMYHotSpotView/Model/GMYHotSpot.h
