@@ -106,11 +106,11 @@
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
 				E589346E1B5BA4E5000265AC /* GMYHotSpotView.h */,
 				E589346F1B5BA4E5000265AC /* GMYHotSpotView.m */,
+				E589344F1B5BA332000265AC /* ViewController.h */,
+				E58934501B5BA332000265AC /* ViewController.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
 				E58934571B5BA332000265AC /* LaunchScreen.xib */,
 				E58934481B5BA332000265AC /* Supporting Files */,
-				E589344F1B5BA332000265AC /* ViewController.h */,
-				E58934501B5BA332000265AC /* ViewController.m */,
 			);
 			path = GMYHotSpotView;
 			sourceTree = "<group>";
