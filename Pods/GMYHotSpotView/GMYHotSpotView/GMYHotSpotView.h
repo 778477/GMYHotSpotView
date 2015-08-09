@@ -36,9 +36,20 @@ typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
  *  按钮标题到边框的距离
  */
 @property (nonatomic, assign) CGFloat titleSpace;
+/**
+ *  支持最大热点行数
+ */
 @property (nonatomic, assign) NSInteger maxLines;
+/**
+ *  热点点击回调
+ */
 @property (nonatomic, copy) HotspotClickHandle clickHandle;
+
+
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
+
 - (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle;
+
+- (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots;
 @end
 

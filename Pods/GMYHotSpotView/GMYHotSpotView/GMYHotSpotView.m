@@ -55,7 +55,12 @@ static const NSInteger tagBaseIndex = 101;
     self.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
 }
 
+- (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots{
+    return [_hotspotViewLayout calculateViewHeightWithHotSpot:hotspots];
+}
 
+
+// TODO
 - (void)layoutHotspots:(NSArray *)hotspots{
     __block  CGFloat xOffset = 0.f;
     [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
