@@ -21,6 +21,18 @@
     return self.frame.size.height;
 }
 
+- (void)setWidth:(CGFloat)width{
+    CGRect frame = self.frame;
+    if(!isnan(width)){
+        frame.size.width = width;
+    }
+    self.frame = frame;
+}
+
+- (CGFloat)width{
+    return self.frame.size.width;
+}
+
 - (CGFloat)bottom{
     return (self.frame.origin.y + self.frame.size.height);
 }

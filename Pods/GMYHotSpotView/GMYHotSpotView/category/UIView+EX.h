@@ -11,4 +11,5 @@
 @interface UIView (EX)
 @property (nonatomic) CGFloat bottom;
 @property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat width;
 @end
