@@ -44,4 +44,41 @@
         [fixedModels removeAllObjects];
     }
 }
+
+- (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
+    __block NSUInteger line = 0;
+    __block CGFloat totalWidth = 0.f;
+    __block NSUInteger totalCount = 0;
+    const CGFloat limitWidth = CGRectGetWidth(_hotspotView.frame);
+    [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
+        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(limitWidth, _hotspotView.buttonHeight)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_hotspotView.fontSize]}
+                                                  context:nil].size;
+        
+        CGFloat tmp = textSize.width + 2*_hotspotView.titleSpace + _hotspotView.minimumInteritemSpacing * totalCount;;
+        
+        if( totalWidth + tmp <= limitWidth){
+            totalWidth += tmp;
+            totalCount += 1;
+        }
+        else{
+            ++line;
+            if(textSize.width + 2*_hotspotView.titleSpace <= limitWidth){
+                totalWidth = textSize.width + 2*_hotspotView.titleSpace;
+                totalCount = 1;
+            }
+            else{
+                totalCount = 0;
+                totalWidth = 0.f;
+            }
+        }
+        
+        if(line == _hotspotView.maxLines) *stop = YES;
+    }];
+    
+    if(totalCount && line < _hotspotView.maxLines) ++line;
+    
+    return (MAX(0, line - 1)* _hotspotView.minimumLineSpacing + line * _hotspotView.buttonHeight);
+}
 @end

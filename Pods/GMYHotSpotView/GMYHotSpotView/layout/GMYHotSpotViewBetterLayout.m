@@ -31,6 +31,19 @@
     }
 }
 
+- (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
+    NSUInteger line = 0;
+    NSMutableArray *models = [NSMutableArray arrayWithArray:hotspots];
+    NSUInteger count = models.count;
+    while (line < _hotspotView.maxLines && count > 0) {
+        NSArray *arr = [self adjustHotspotsSort:models limitWidth:CGRectGetWidth(_hotspotView.frame)];
+        count -= arr.count;
+        [models removeObjectsInArray:arr];
+        line++;
+    }
+    return (MAX(0, line - 1) * _hotspotView.minimumLineSpacing + line* _hotspotView.buttonHeight);
+}
+
 #pragma mark - 01 knapsack
 /**
  *  f[i,j] = Max{f[i-1,j-Wi]+Pi( j >= Wi ),  f[i-1,j]}
@@ -85,11 +98,14 @@
             }
         }
     }
-    int64_t i = n - 1, j = v;
+    
+    int64_t i = n-1, j = v;
+    flag = false;
     while(i>-1 && j >-1){
         if(path[i][j]){
-            j = j - weight[i] - itemspace;
+            j = j - weight[i] - (flag ? itemspace : 0);
             [ans addObject:hotspots[i]];
+            flag = true;
         }
         i--;
     }
