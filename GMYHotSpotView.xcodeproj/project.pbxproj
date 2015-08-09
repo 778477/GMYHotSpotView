@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		385116AB955BBEDE9CA0CC61 /* libPods-GMYHotSpotView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */; };
 		E589344B1B5BA332000265AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344A1B5BA332000265AC /* main.m */; };
 		E589344E1B5BA332000265AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E589344D1B5BA332000265AC /* AppDelegate.m */; };
-		E58934511B5BA332000265AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934501B5BA332000265AC /* ViewController.m */; };
 		E58934561B5BA332000265AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E58934551B5BA332000265AC /* Images.xcassets */; };
 		E58934591B5BA332000265AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58934571B5BA332000265AC /* LaunchScreen.xib */; };
 		E58934651B5BA332000265AC /* GMYHotSpotViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */; };
+		E5DDFB851B77973000012022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DDFB831B77973000012022 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +26,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GMYHotSpotView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMYHotSpotView.release.xcconfig"; path = "Pods/Target Support Files/Pods-GMYHotSpotView/Pods-GMYHotSpotView.release.xcconfig"; sourceTree = "<group>"; };
 		8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GMYHotSpotView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GMYHotSpotView/Pods-GMYHotSpotView.debug.xcconfig"; sourceTree = "<group>"; };
 		E58934451B5BA332000265AC /* GMYHotSpotView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GMYHotSpotView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,13 +33,13 @@
 		E589344A1B5BA332000265AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E589344C1B5BA332000265AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E589344D1B5BA332000265AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E589344F1B5BA332000265AC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E58934501B5BA332000265AC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E58934551B5BA332000265AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E58934581B5BA332000265AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E589345E1B5BA332000265AC /* GMYHotSpotViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GMYHotSpotViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58934631B5BA332000265AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E58934641B5BA332000265AC /* GMYHotSpotViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMYHotSpotViewTests.m; sourceTree = "<group>"; };
+		E5DDFB831B77973000012022 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E5DDFB841B77973000012022 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				385116AB955BBEDE9CA0CC61 /* libPods-GMYHotSpotView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +72,6 @@
 		A9F2EF0409724B86C880C607 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F2517ECC90E9D5FA58D4A30 /* libPods-GMYHotSpotView.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,10 +99,10 @@
 		E58934471B5BA332000265AC /* GMYHotSpotView */ = {
 			isa = PBXGroup;
 			children = (
+				E5DDFB831B77973000012022 /* ViewController.m */,
+				E5DDFB841B77973000012022 /* ViewController.h */,
 				E589344C1B5BA332000265AC /* AppDelegate.h */,
 				E589344D1B5BA332000265AC /* AppDelegate.m */,
-				E589344F1B5BA332000265AC /* ViewController.h */,
-				E58934501B5BA332000265AC /* ViewController.m */,
 				E58934551B5BA332000265AC /* Images.xcassets */,
 				E58934571B5BA332000265AC /* LaunchScreen.xib */,
 				E58934481B5BA332000265AC /* Supporting Files */,
@@ -274,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58934511B5BA332000265AC /* ViewController.m in Sources */,
+				E5DDFB851B77973000012022 /* ViewController.m in Sources */,
 				E589344E1B5BA332000265AC /* AppDelegate.m in Sources */,
 				E589344B1B5BA332000265AC /* main.m in Sources */,
 			);
