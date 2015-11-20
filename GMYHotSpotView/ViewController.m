@@ -38,10 +38,10 @@
     [self.view addSubview:self.hotspotView];
     
     
-    [self.hotspotView1 updateHotSpotWithArray:formatedArr ClickHandle:^(NSInteger index, NSString *title) {
-        NSLog(@"%ld - %@",index,title);
-    }];
-    [self.view addSubview:self.hotspotView1];
+//    [self.hotspotView1 updateHotSpotWithArray:formatedArr ClickHandle:^(NSInteger index, NSString *title) {
+//        NSLog(@"%ld - %@",index,title);
+//    }];
+//    [self.view addSubview:self.hotspotView1];
 }
 
 #pragma mark - lzay Load subView
