@@ -16,3 +16,5 @@
 * 同样的GMYHotSpotView控件，上面使用的是normalLayout，下面使用的是BetterLayout。能对比发现 BetterLayout在布局方面比NormalLayout更为紧凑一些。数据差异(文案长度)越大，效果越明显。
 
 
+### TODO List
+* 支持长按触发修改状态(可拖动，可删除）
