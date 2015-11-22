@@ -1,1 +1,1 @@
-../../../GMYHotSpotView/GMYHotSpotView/category/UIView+EX.h
+../../../../GMYHotSpotView/Category/UIView+EX.h

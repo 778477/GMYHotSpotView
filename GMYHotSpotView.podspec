@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
 
   s.source_files  = "GMYHotSpotView/GMYHotSpotView.{h,m}" 
-  
+  s.resources     = "GMYHotSpotView/Resources.bundle" 
   s.subspec 'Model' do |m|
     m.source_files = "GMYHotSpotView/Model/*.{h,m}"
   end

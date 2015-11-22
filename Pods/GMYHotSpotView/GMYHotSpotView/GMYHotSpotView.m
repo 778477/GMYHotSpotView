@@ -107,7 +107,13 @@ static const NSInteger tagBaseIndex = 101;
 }
 #pragma mark - UILongPressGestureRecognizer Action
 - (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)GestureRecognizer{
-//    self.state = HotspotStateEditing;
+    self.state = HotspotStateEditing;
+    
+    [self.subviews enumerateObjectsUsingBlock:^(UIButton* obj, NSUInteger idx, BOOL *stop) {
+        [UIView animateWithDuration:0.3f delay:.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [obj setTitleEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 15)];
+        } completion:nil];
+    }];
 }
 
 @end

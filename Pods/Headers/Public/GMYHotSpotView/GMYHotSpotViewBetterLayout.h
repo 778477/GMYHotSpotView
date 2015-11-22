@@ -1,1 +1,1 @@
-../../../GMYHotSpotView/GMYHotSpotView/layout/GMYHotSpotViewBetterLayout.h
+../../../../GMYHotSpotView/Layout/GMYHotSpotViewBetterLayout.h
