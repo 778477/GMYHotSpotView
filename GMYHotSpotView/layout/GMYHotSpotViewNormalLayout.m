@@ -45,6 +45,10 @@
     }
 }
 
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot{
+    
+}
+
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
     __block NSUInteger line = 0;
     __block CGFloat totalWidth = 0.f;

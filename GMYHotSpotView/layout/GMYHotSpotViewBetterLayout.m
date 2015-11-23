@@ -31,6 +31,10 @@
     }
 }
 
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot{
+    
+}
+
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
     NSUInteger line = 0;
     NSMutableArray *models = [NSMutableArray arrayWithArray:hotspots];
