@@ -15,10 +15,9 @@
 
 
 static const NSInteger tagBaseIndex = 101;
-@interface GMYHotSpotView(){
-    NSMutableArray *_hotspots;
-    id<GMYHotSpotViewLayout> _hotspotViewLayout;
-}
+@interface GMYHotSpotView()
+@property (nonatomic, strong) NSMutableArray *hotspots;
+@property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
 /**
  *  热点视图 当前状态(正常状态,编辑状态)
  */
@@ -42,7 +41,8 @@ static const NSInteger tagBaseIndex = 101;
         
         self.maxLines = INT32_MAX;
         
-        UIGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)];
+        UIGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(longPressAtHotspotView:)];
         [self addGestureRecognizer:longPressGesture];
         
         // FIXME
@@ -54,11 +54,11 @@ static const NSInteger tagBaseIndex = 101;
 #pragma mark - Public Method
 - (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
     [self p_clean];
-    _hotspots = [hotspots mutableCopy];
+    self.hotspots = [hotspots mutableCopy];
     _clickHandle = clickHandle;
     __block NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
     
-    [_hotspotViewLayout layoutHotSpotView:hotspots eachLineCompletion:^(NSInteger line, NSArray *fixedHotspots) {
+    [self.hotspotViewLayout layoutHotSpotView:hotspots eachLineCompletion:^(NSInteger line, NSArray *fixedHotspots) {
         if (line < self.maxLines) {
             finalLines = line + 1;
             [self layoutHotspots:fixedHotspots];
@@ -69,7 +69,7 @@ static const NSInteger tagBaseIndex = 101;
 }
 
 - (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots{
-    return [_hotspotViewLayout calculateViewHeightWithHotSpot:hotspots];
+    return [self.hotspotViewLayout calculateViewHeightWithHotSpot:hotspots];
 }
 
 
@@ -102,7 +102,7 @@ static const NSInteger tagBaseIndex = 101;
         [button addSubview:imgView];
         if(self.state == HotspotStateNormal) imgView.hidden = YES;
         
-        button.tag = tagBaseIndex + [_hotspots indexOfObject:obj];
+        button.tag = tagBaseIndex + [self.hotspots indexOfObject:obj];
         [self addSubview:button];
         xOffset += (button.frame.size.width + _minimumInteritemSpacing);
     }];
@@ -110,7 +110,8 @@ static const NSInteger tagBaseIndex = 101;
 #pragma mark - Private Mathod
 - (void)clickHotspot:(UIButton *)sender{
     if(self.state == HotspotStateEditing){
-        [_hotspots removeObject:_hotspots[sender.tag - tagBaseIndex]];
+        id <GMYHotSpot> hotspot = self.hotspots[sender.tag - tagBaseIndex];
+        [self.hotspots removeObject:hotspot];
         [sender removeFromSuperview];
         // reset button tag
         [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
@@ -118,16 +119,17 @@ static const NSInteger tagBaseIndex = 101;
         }];
         
         // TODO add animation to reset frame
+        [self.hotspotViewLayout updateHotSpotViewLayoutByRemoveHotspot:hotspot];
         
         return;
     }
     else if(self.state == HotspotStateNormal && _clickHandle){
-        id<GMYHotSpot> spot = _hotspots[sender.tag - tagBaseIndex];
+        id<GMYHotSpot> spot = self.hotspots[sender.tag - tagBaseIndex];
         _clickHandle(sender.tag - tagBaseIndex, spot.title);
     }
 }
 - (void)p_clean{
-    [_hotspots removeAllObjects];
+    [self.hotspots removeAllObjects];
     [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
