@@ -112,6 +112,11 @@ static const NSInteger tagBaseIndex = 101;
     if(self.state == HotspotStateEditing){
         [_hotspots removeObject:_hotspots[sender.tag - tagBaseIndex]];
         [sender removeFromSuperview];
+        // reset button tag
+        [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
+            obj.tag = tagBaseIndex + idx;
+        }];
+        
         // TODO add animation to reset frame
         
         return;
