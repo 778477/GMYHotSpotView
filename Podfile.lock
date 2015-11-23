@@ -8,11 +8,11 @@ PODS:
   - GMYHotSpotView/Model (1.0.0.0)
 
 DEPENDENCIES:
-  - GMYHotSpotView (from `/Users/guomiaoyou/Documents/GitHub/GMYHotSpotView`)
+  - GMYHotSpotView (from `/Users/778477_gmy/Documents/IOS/GMYHotSpotView`)
 
 EXTERNAL SOURCES:
   GMYHotSpotView:
-    :path: /Users/guomiaoyou/Documents/GitHub/GMYHotSpotView
+    :path: /Users/778477_gmy/Documents/IOS/GMYHotSpotView
 
 SPEC CHECKSUMS:
   GMYHotSpotView: da1d17dd5b8a15d380a185f5955691074938013a
