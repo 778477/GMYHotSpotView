@@ -1,41 +1,5 @@
 ## http://lint.travis-ci.org/
-# language: objective-c
-# xcode_workspace: GMYHotSpotView.xcworkspace
-# xcode_scheme: GMYHotSpotView
-
-# branches:
-#   only:
-#     - master
-# language: objective-c
-
-# script: xctool -sdk iphonesimulator -workspace GMYHotSpotView.xcworkspace.xcworkspace -scheme GMYHotSpotView build test
-
 language: objective-c
-
-osx_image: xcode7
-
-# xcode_project: SampleNotifcations/SampleNotifcations.xcodeproj
-# xcode_workspace: SampleNotifcations/SampleNotifcations.xcworkspace
-
-# xcode_scheme: SampleNotifcationsTests
-
-podfile: Podfile
-
-# xcode_sdk: iphonesimulator9.0
-
-script:
-
-  xctool
-  -workspace GMYHotSpotView.xcworkspace
-  -scheme GMYHotSpotView
-  -sdk iphonesimulator
-  -destination 'platform=iOS Simulator,name=iPhone 6 Plus'
-  build 
-  test
-  ONLY_ACTIVE_ARCH=NO
-  CODE_SIGN_IDENTITY=""
-  CODE_SIGNING_REQUIRED=NO
-
-before_install:
-  - brew update
-  - brew uninstall xctool && brew install --HEAD xctool
+xcode_workspace: GMYHotSpotView.xcworkspace
+xcode_scheme: GMYHotSpotView
+script: xcodebuild -workspace GMYHotSpotView.xcworkspace -scheme GMYHotSpotView CODE_SIGNING_REQUIRED=NO
