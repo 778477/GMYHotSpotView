@@ -1,2 +1,3 @@
+## http://lint.travis-ci.org/
 language: objective-c
-script:xcodebuild -workspace GMYHotSpotView.xcworkspace -scheme GMYHotSpotView
+script: xcodebuild -workspace GMYHotSpotView.xcworkspace -scheme GMYHotSpotView
