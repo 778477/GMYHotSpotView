@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/778477/GMYHotSpotView.png)](https://travis-ci.org/778477/GMYHotSpotView)
+[![Build Status](https://travis-ci.org/778477/GMYHotSpotView.svg)](https://travis-ci.org/778477/GMYHotSpotView)
+
 
 2015年7月26日 
 
