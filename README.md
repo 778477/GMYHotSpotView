@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/778477/GMYHotSpotView.png)](https://travis-ci.org/778477/GMYHotSpotView)
+
 2015年7月26日 
 
 ## HotSpotView 热点视图
