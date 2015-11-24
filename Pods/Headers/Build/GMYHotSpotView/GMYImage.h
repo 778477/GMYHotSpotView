@@ -1,1 +1,0 @@
-../../../../GMYHotSpotView/Model/GMYImage.h

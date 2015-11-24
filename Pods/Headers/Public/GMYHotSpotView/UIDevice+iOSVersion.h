@@ -1,1 +1,1 @@
-../../../../GMYHotSpotView/Category/UIDevice+iOSVersion.h
+../../../GMYHotSpotView/GMYHotSpotView/category/UIDevice+iOSVersion.h

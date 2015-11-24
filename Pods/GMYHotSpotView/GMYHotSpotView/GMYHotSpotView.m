@@ -17,10 +17,6 @@ static const NSInteger tagBaseIndex = 101;
     NSMutableArray *_hotspots;
     id<GMYHotSpotViewLayout> _hotspotViewLayout;
 }
-/**
- *  热点视图 当前状态(正常状态,编辑状态)
- */
-@property (nonatomic, assign) HotspotState state;
 @end
 
 @implementation GMYHotSpotView
@@ -36,16 +32,8 @@ static const NSInteger tagBaseIndex = 101;
         self.minimumInteritemSpacing = 5.f;
         self.minimumLineSpacing = 5.f;
         self.titleSpace = 15.f;
-        self.buttonBackgroundColor = [UIColor whiteColor];
-        self.buttonTitleColor = [UIColor blackColor];
         
         self.maxLines = INT32_MAX;
-        
-        UIGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)];
-        [self addGestureRecognizer:longPressGesture];
-        
-        // FIXME
-        self.backgroundColor = [UIColor blackColor]; // text code
     }
     return self;
 }
@@ -86,9 +74,8 @@ static const NSInteger tagBaseIndex = 101;
         button.layer.borderColor =[UIColor grayColor].CGColor;
         button.layer.cornerRadius = 2.f;
         button.titleLabel.font = [UIFont systemFontOfSize:_fontSize];
-        button.backgroundColor = self.buttonBackgroundColor;
         [button setTitle:obj.title forState:UIControlStateNormal];
-        [button setTitleColor:self.buttonTitleColor forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(clickHotspot:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = tagBaseIndex + [_hotspots indexOfObject:obj];
         [self addSubview:button];
@@ -104,16 +91,6 @@ static const NSInteger tagBaseIndex = 101;
 }
 - (void)p_clean{
     [_hotspots removeAllObjects];
-}
-#pragma mark - UILongPressGestureRecognizer Action
-- (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)GestureRecognizer{
-    self.state = HotspotStateEditing;
-    
-    [self.subviews enumerateObjectsUsingBlock:^(UIButton* obj, NSUInteger idx, BOOL *stop) {
-        [UIView animateWithDuration:0.3f delay:.0f usingSpringWithDamping:0.5f initialSpringVelocity:0.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [obj setTitleEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 15)];
-        } completion:nil];
-    }];
 }
 
 @end

@@ -11,11 +11,6 @@
 
 typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
 
-typedef NS_ENUM(NSUInteger, HotspotState) {
-    HotspotStateNormal = 0,
-    HotspotStateEditing,
-};
-
 @interface GMYHotSpotView : UIView
 /**
  *  按钮 标题文字的大小
@@ -37,9 +32,6 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
  *  按钮之间的距离
  */
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
-
-@property (nonatomic, strong) UIColor *buttonBackgroundColor;
-@property (nonatomic, strong) UIColor *buttonTitleColor;
 /**
  *  按钮标题到边框的距离
  */
@@ -52,6 +44,7 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
  *  热点点击回调
  */
 @property (nonatomic, copy) HotspotClickHandle clickHandle;
+
 
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
 

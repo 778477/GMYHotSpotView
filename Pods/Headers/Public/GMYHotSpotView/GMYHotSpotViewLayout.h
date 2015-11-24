@@ -1,1 +1,1 @@
-../../../../GMYHotSpotView/Layout/GMYHotSpotViewLayout.h
+../../../GMYHotSpotView/GMYHotSpotView/layout/GMYHotSpotViewLayout.h

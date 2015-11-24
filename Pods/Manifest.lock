@@ -1,20 +1,16 @@
 PODS:
-  - GMYHotSpotView (1.0.0.0):
-    - GMYHotSpotView/Category (= 1.0.0.0)
-    - GMYHotSpotView/Layout (= 1.0.0.0)
-    - GMYHotSpotView/Model (= 1.0.0.0)
-  - GMYHotSpotView/Category (1.0.0.0)
-  - GMYHotSpotView/Layout (1.0.0.0)
-  - GMYHotSpotView/Model (1.0.0.0)
+  - GMYHotSpotView (1.0.0.1):
+    - GMYHotSpotView/Category (= 1.0.0.1)
+    - GMYHotSpotView/Layout (= 1.0.0.1)
+    - GMYHotSpotView/Model (= 1.0.0.1)
+  - GMYHotSpotView/Category (1.0.0.1)
+  - GMYHotSpotView/Layout (1.0.0.1)
+  - GMYHotSpotView/Model (1.0.0.1)
 
 DEPENDENCIES:
-  - GMYHotSpotView (from `/Users/778477_gmy/Documents/IOS/GMYHotSpotView`)
-
-EXTERNAL SOURCES:
-  GMYHotSpotView:
-    :path: /Users/778477_gmy/Documents/IOS/GMYHotSpotView
+  - GMYHotSpotView (= 1.0.0.1)
 
 SPEC CHECKSUMS:
-  GMYHotSpotView: da1d17dd5b8a15d380a185f5955691074938013a
+  GMYHotSpotView: 35baf02c4a51443c6d8f53eb5b6e37f0bc1c9553
 
 COCOAPODS: 0.35.0
