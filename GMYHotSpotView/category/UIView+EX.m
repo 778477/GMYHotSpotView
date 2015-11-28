@@ -57,4 +57,17 @@
     }
     self.frame = frame;
 }
+
+#pragma mark - Point Getter & Setter
+- (CGPoint)point{
+    return CGPointMake(self.frame.origin.x, self.frame.origin.y);
+}
+
+- (void)setPoint:(CGPoint)point{
+    CGRect frame = self.frame;
+    if(!isnan(point.x) && !isnan(point.y)){
+        frame.origin = point;
+    }
+    self.frame = frame;
+}
 @end
