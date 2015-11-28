@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (EX)
+@property (nonatomic) CGFloat left;
 @property (nonatomic) CGFloat bottom;
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGFloat width;
