@@ -15,6 +15,6 @@ typedef void(^eachLineCompletion)(NSInteger line,NSArray *fixedHotspots);
 @required
 @property (nonatomic, weak) GMYHotSpotView *hotspotView;
 - (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion;
-- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot;
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView;
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots;
 @end

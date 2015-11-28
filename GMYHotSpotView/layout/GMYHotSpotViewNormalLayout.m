@@ -7,8 +7,11 @@
 //
 
 #import "GMYHotSpotViewNormalLayout.h"
+#import "GMYHotSpotViewDefines.h"
 #import "GMYHotSpotView.h"
 #import "GMYHotSpot.h"
+#import "UIView+EX.h"
+
 @implementation GMYHotSpotViewNormalLayout
 @synthesize hotspotView = _hotspotView;
 #pragma mark - Override
@@ -45,8 +48,50 @@
     }
 }
 
-- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot{
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView{
+    CGFloat offsetX = spotView.left;
+    CGFloat wellOff = _hotspotView.width - offsetX;
+    NSUInteger nowLine = hotspot.line;
+    NSUInteger endIndex = kGMYHotSpotViewTagBaseIndex + _hotspotView.subviews.count;
+    for (NSUInteger idx = spotView.tag; idx < endIndex; idx++) {
+        UIView *btn = [_hotspotView viewWithTag:idx];
+        id<GMYHotSpot> model = _hotspotView.hotspots[idx - kGMYHotSpotViewTagBaseIndex];
+        if(model.line != nowLine){
+            if(wellOff >= btn.width){
+                [UIView animateWithDuration:0.3f animations:^{
+                    btn.point = CGPointMake(offsetX, nowLine*_hotspotView.buttonHeight+nowLine*_hotspotView.minimumLineSpacing);
+                }];
+                model.line = nowLine;
+            }
+            else{
+                if(btn.left - 0.f > 1e-6){
+                    --idx;
+                    offsetX = 0;
+                    wellOff = _hotspotView.width - offsetX;
+                    nowLine = model.line;
+                    continue;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        else{
+            [UIView animateWithDuration:0.3f animations:^{
+                btn.left = offsetX;
+            }];
+        }
+        offsetX += (btn.width + _hotspotView.minimumInteritemSpacing);
+        wellOff = _hotspotView.width - offsetX;
+    }
     
+    if(_hotspotView.hotspots.count >= 1){
+        id<GMYHotSpot> lastHotSpot = [_hotspotView.hotspots lastObject];
+        _hotspotView.height = (lastHotSpot.line+1) * _hotspotView.buttonHeight + lastHotSpot.line*_hotspotView.minimumLineSpacing;
+    }
+    else{
+        _hotspotView.height = 0;
+    }
 }
 
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
