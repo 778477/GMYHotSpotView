@@ -57,6 +57,18 @@
     }
     self.frame = frame;
 }
+#pragma mark - Right Getter & Setter
+- (CGFloat)right{
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setRight:(CGFloat)right{
+    CGRect frame = self.frame;
+    if(!isnan(right)){
+        frame.origin.x = right - frame.size.width;
+    }
+    self.frame = frame;
+}
 
 #pragma mark - Point Getter & Setter
 - (CGPoint)point{
