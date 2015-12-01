@@ -53,6 +53,17 @@
     CGFloat wellOff = _hotspotView.width - offsetX;
     NSUInteger nowLine = hotspot.line;
     NSUInteger endIndex = kGMYHotSpotViewTagBaseIndex + _hotspotView.subviews.count;
+    if(spotView.left - 0.f < 1e-6 && spotView.tag >= kGMYHotSpotViewTagBaseIndex+1){
+        UIView *front = [_hotspotView viewWithTag:spotView.tag - 1];
+        UIView *back = [_hotspotView viewWithTag:spotView.tag];
+        
+        if(_hotspotView.width - front.left - front.width - _hotspotView.minimumInteritemSpacing >= back.width){
+            --nowLine;
+            offsetX =  front.right + _hotspotView.minimumInteritemSpacing;
+            wellOff = _hotspotView.width - offsetX;
+        }
+    }
+    
     for (NSUInteger idx = spotView.tag; idx < endIndex; idx++) {
         UIView *btn = [_hotspotView viewWithTag:idx];
         id<GMYHotSpot> model = _hotspotView.hotspots[idx - kGMYHotSpotViewTagBaseIndex];
@@ -69,6 +80,13 @@
                     offsetX = 0;
                     wellOff = _hotspotView.width - offsetX;
                     nowLine = model.line;
+                    continue;
+                }
+                else if(model.line - nowLine > 1){
+                    --idx;
+                    offsetX = 0;
+                    wellOff = _hotspotView.width - offsetX;
+                    nowLine++;
                     continue;
                 }
                 else{
