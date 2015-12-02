@@ -12,11 +12,9 @@
 #import "GMYHotSpotViewNormalLayout.h"
 #import "UIView+EX.h"
 #import "GMYImage.h"
+#import "GMYHotSpotViewDefines.h"
 
-
-static const NSInteger tagBaseIndex = 101;
 @interface GMYHotSpotView()
-@property (nonatomic, strong) NSMutableArray *hotspots;
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
 /**
  *  热点视图 当前状态(正常状态,编辑状态)
@@ -44,9 +42,6 @@ static const NSInteger tagBaseIndex = 101;
         UIGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                               action:@selector(longPressAtHotspotView:)];
         [self addGestureRecognizer:longPressGesture];
-        
-        // FIXME
-        self.backgroundColor = [UIColor blackColor]; // text code
     }
     return self;
 }
@@ -78,7 +73,6 @@ static const NSInteger tagBaseIndex = 101;
     __block  CGFloat xOffset = 0.f;
     [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
         UIButton *button = [[UIButton alloc] init];
-        
         CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]} context:nil].size;
         button.frame = CGRectMake(xOffset, _minimumLineSpacing*MAX(0, obj.line) + obj.line*_buttonHeight, textSize.width + 2*_titleSpace, _buttonHeight);
         button.layer.borderWidth = 0.5f;
@@ -101,8 +95,8 @@ static const NSInteger tagBaseIndex = 101;
         imgView.tag = 8;
         [button addSubview:imgView];
         if(self.state == HotspotStateNormal) imgView.hidden = YES;
+        button.tag = kGMYHotSpotViewTagBaseIndex + [self.hotspots indexOfObject:obj];
         
-        button.tag = tagBaseIndex + [self.hotspots indexOfObject:obj];
         [self addSubview:button];
         xOffset += (button.frame.size.width + _minimumInteritemSpacing);
     }];
@@ -110,22 +104,17 @@ static const NSInteger tagBaseIndex = 101;
 #pragma mark - Private Mathod
 - (void)clickHotspot:(UIButton *)sender{
     if(self.state == HotspotStateEditing){
-        id <GMYHotSpot> hotspot = self.hotspots[sender.tag - tagBaseIndex];
+        id <GMYHotSpot> hotspot = self.hotspots[sender.tag - kGMYHotSpotViewTagBaseIndex];
         [self.hotspots removeObject:hotspot];
         [sender removeFromSuperview];
-        // reset button tag
         [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-            obj.tag = tagBaseIndex + idx;
+            obj.tag = kGMYHotSpotViewTagBaseIndex + idx;
         }];
-        
-        // TODO add animation to reset frame
-        [self.hotspotViewLayout updateHotSpotViewLayoutByRemoveHotspot:hotspot];
-        
-        return;
+        [self.hotspotViewLayout updateHotSpotViewLayoutByRemoveHotspot:hotspot withRemovedSpot:sender];
     }
     else if(self.state == HotspotStateNormal && _clickHandle){
-        id<GMYHotSpot> spot = self.hotspots[sender.tag - tagBaseIndex];
-        _clickHandle(sender.tag - tagBaseIndex, spot.title);
+        id<GMYHotSpot> spot = self.hotspots[sender.tag - kGMYHotSpotViewTagBaseIndex];
+        _clickHandle(sender.tag - kGMYHotSpotViewTagBaseIndex, spot.title);
     }
 }
 - (void)p_clean{
