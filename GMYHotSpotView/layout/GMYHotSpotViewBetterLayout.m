@@ -39,12 +39,34 @@ typedef unsigned long uInt64;
 }
 
 - (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView{
+    NSUInteger index = spotView.tag - kGMYHotSpotViewTagBaseIndex;
+    NSRange range = NSMakeRange(index , _hotspotView.hotspots.count - index);
+    
     NSMutableArray *modelShoots = [_hotspotView.hotspots mutableCopy];
-    NSMutableArray *models = [_hotspotView.hotspots mutableCopy];
+    NSMutableArray *models = [[_hotspotView.hotspots subarrayWithRange:range] mutableCopy];
     NSMutableArray *rejusetViews = [NSMutableArray arrayWithCapacity:models.count];
-    [_hotspotView.hotspots removeAllObjects];
-    __block CGFloat offsetX = 0.f;
-    NSUInteger nowLine = 0;
+    [_hotspotView.hotspots removeObjectsInRange:range];
+    __block CGFloat offsetX = spotView.left;
+    NSUInteger nowLine = hotspot.line;
+    NSArray *adjustModels = [self adjustHotspotsSort:models limitWidth:_hotspotView.width - offsetX];
+    [adjustModels enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
+        UIView *view = [_hotspotView viewWithTag:[modelShoots indexOfObject:obj] + kGMYHotSpotViewTagBaseIndex];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            view.point = CGPointMake(offsetX, nowLine*_hotspotView.buttonHeight + nowLine*_hotspotView.minimumLineSpacing);
+        }];
+        
+        [rejusetViews addObject:view];
+        offsetX += (view.width + _hotspotView.minimumInteritemSpacing);
+        obj.line = nowLine;
+        printf("%s ",[obj.title UTF8String]);
+    }];
+    printf("\n");
+    nowLine++;
+    offsetX = 0.f;
+    [models removeObjectsInArray:adjustModels];
+    [_hotspotView.hotspots addObjectsFromArray:adjustModels];
+    
     
     while (models.count >= 1) {
         NSArray *adjustModels = [self adjustHotspotsSort:models limitWidth:_hotspotView.width];
@@ -69,7 +91,7 @@ typedef unsigned long uInt64;
     }
     
     [rejusetViews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-        obj.tag = idx + kGMYHotSpotViewTagBaseIndex;
+        obj.tag = idx + spotView.tag;
     }];
     
     if(_hotspotView.hotspots.count >= 1){
