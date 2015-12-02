@@ -1,5 +1,7 @@
 ## http://lint.travis-ci.org/
 language: objective-c
+
 xcode_workspace: GMYHotSpotView.xcworkspace
 xcode_scheme: GMYHotSpotView
+
 script: xcodebuild -workspace GMYHotSpotView.xcworkspace -scheme GMYHotSpotView CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

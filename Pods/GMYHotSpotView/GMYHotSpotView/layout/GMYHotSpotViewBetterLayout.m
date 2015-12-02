@@ -27,8 +27,10 @@ typedef unsigned long uInt64;
         [_hotspotView.hotspots addObjectsFromArray:arr];
         [arr enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
             obj.line = line;
+            
+            printf("%s ",[obj.title UTF8String]);
         }];
-        
+        printf("\n");
         completion(line,arr);
         line++;
         count -= arr.count;
@@ -37,10 +39,68 @@ typedef unsigned long uInt64;
 }
 
 - (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView{
-    NSMutableArray *models = [NSMutableArray arrayWithArray:_hotspotView.hotspots];
-    HotspotClickHandle handle = _hotspotView.clickHandle;
-
-    [_hotspotView updateHotSpotWithArray:models ClickHandle:handle];
+    NSUInteger index = spotView.tag - kGMYHotSpotViewTagBaseIndex;
+    NSRange range = NSMakeRange(index , _hotspotView.hotspots.count - index);
+    
+    NSMutableArray *modelShoots = [_hotspotView.hotspots mutableCopy];
+    NSMutableArray *models = [[_hotspotView.hotspots subarrayWithRange:range] mutableCopy];
+    NSMutableArray *rejusetViews = [NSMutableArray arrayWithCapacity:models.count];
+    [_hotspotView.hotspots removeObjectsInRange:range];
+    __block CGFloat offsetX = spotView.left;
+    NSUInteger nowLine = hotspot.line;
+    NSArray *adjustModels = [self adjustHotspotsSort:models limitWidth:_hotspotView.width - offsetX];
+    [adjustModels enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
+        UIView *view = [_hotspotView viewWithTag:[modelShoots indexOfObject:obj] + kGMYHotSpotViewTagBaseIndex];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            view.point = CGPointMake(offsetX, nowLine*_hotspotView.buttonHeight + nowLine*_hotspotView.minimumLineSpacing);
+        }];
+        
+        [rejusetViews addObject:view];
+        offsetX += (view.width + _hotspotView.minimumInteritemSpacing);
+        obj.line = nowLine;
+        printf("%s ",[obj.title UTF8String]);
+    }];
+    printf("\n");
+    nowLine++;
+    offsetX = 0.f;
+    [models removeObjectsInArray:adjustModels];
+    [_hotspotView.hotspots addObjectsFromArray:adjustModels];
+    
+    
+    while (models.count >= 1) {
+        NSArray *adjustModels = [self adjustHotspotsSort:models limitWidth:_hotspotView.width];
+        
+        [adjustModels enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
+            UIView *view = [_hotspotView viewWithTag:[modelShoots indexOfObject:obj] + kGMYHotSpotViewTagBaseIndex];
+            
+            [UIView animateWithDuration:0.3f animations:^{
+                view.point = CGPointMake(offsetX, nowLine*_hotspotView.buttonHeight + nowLine*_hotspotView.minimumLineSpacing);
+            }];
+            
+            [rejusetViews addObject:view];
+            offsetX += (view.width + _hotspotView.minimumInteritemSpacing);
+            obj.line = nowLine;
+            printf("%s ",[obj.title UTF8String]);
+        }];
+         printf("\n");
+        nowLine++;
+        offsetX = 0.f;
+        [models removeObjectsInArray:adjustModels];
+        [_hotspotView.hotspots addObjectsFromArray:adjustModels];
+    }
+    
+    [rejusetViews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
+        obj.tag = idx + spotView.tag;
+    }];
+    
+    if(_hotspotView.hotspots.count >= 1){
+        id<GMYHotSpot> lastHotSpot = [_hotspotView.hotspots lastObject];
+        _hotspotView.height = (lastHotSpot.line+1) * _hotspotView.buttonHeight + lastHotSpot.line*_hotspotView.minimumLineSpacing;
+    }
+    else{
+        _hotspotView.height = 0;
+    }
 }
 
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots{
@@ -109,6 +169,7 @@ typedef unsigned long uInt64;
     
     Int64 val = dp[v];
     unsigned index = 0;
+    printf("value : %lld \n",val);
     while (val > 0) {
         for(int i=0;i<n;i++){
             if(path[val][i]){
@@ -118,7 +179,9 @@ typedef unsigned long uInt64;
         }
         [ans addObject:hotspots[index]];
         val -= weight[index];
+        printf("weights : %lu\n",weight[index]);
     }
+    printf("\n");
     
     free(value);
     free(weight);
