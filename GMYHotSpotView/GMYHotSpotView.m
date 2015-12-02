@@ -107,9 +107,12 @@
         id <GMYHotSpot> hotspot = self.hotspots[sender.tag - kGMYHotSpotViewTagBaseIndex];
         [self.hotspots removeObject:hotspot];
         [sender removeFromSuperview];
-        [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-            obj.tag = kGMYHotSpotViewTagBaseIndex + idx;
-        }];
+        NSInteger indexTag = sender.tag;
+        while (indexTag + 1 <= kGMYHotSpotViewTagBaseIndex + self.hotspots.count) {
+            UIView *view = [self viewWithTag:indexTag + 1];
+            view.tag = indexTag++;
+        }
+        
         [self.hotspotViewLayout updateHotSpotViewLayoutByRemoveHotspot:hotspot withRemovedSpot:sender];
     }
     else if(self.state == HotspotStateNormal && _clickHandle){
