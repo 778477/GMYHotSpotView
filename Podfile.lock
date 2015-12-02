@@ -1,16 +1,26 @@
 PODS:
-  - GMYHotSpotView (1.0.0.1):
-    - GMYHotSpotView/Category (= 1.0.0.1)
-    - GMYHotSpotView/Layout (= 1.0.0.1)
-    - GMYHotSpotView/Model (= 1.0.0.1)
-  - GMYHotSpotView/Category (1.0.0.1)
-  - GMYHotSpotView/Layout (1.0.0.1)
-  - GMYHotSpotView/Model (1.0.0.1)
+  - GMYHotSpotView (1.0.0.0):
+    - GMYHotSpotView/Category (= 1.0.0.0)
+    - GMYHotSpotView/Layout (= 1.0.0.0)
+    - GMYHotSpotView/Model (= 1.0.0.0)
+  - GMYHotSpotView/Category (1.0.0.0)
+  - GMYHotSpotView/Layout (1.0.0.0)
+  - GMYHotSpotView/Model (1.0.0.0)
 
 DEPENDENCIES:
-  - GMYHotSpotView (= 1.0.0.1)
+  - GMYHotSpotView (from `git@github.com:778477/GMYHotSpotView.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  GMYHotSpotView:
+    :branch: master
+    :git: git@github.com:778477/GMYHotSpotView.git
+
+CHECKOUT OPTIONS:
+  GMYHotSpotView:
+    :commit: 7730411b67986d09a937d627f3797af6ab4e9b9f
+    :git: git@github.com:778477/GMYHotSpotView.git
 
 SPEC CHECKSUMS:
-  GMYHotSpotView: 35baf02c4a51443c6d8f53eb5b6e37f0bc1c9553
+  GMYHotSpotView: da1d17dd5b8a15d380a185f5955691074938013a
 
 COCOAPODS: 0.35.0

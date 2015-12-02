@@ -9,6 +9,7 @@
 #import "UIView+EX.h"
 
 @implementation UIView (EX)
+#pragma mark - Height Getter & Setter
 - (void)setHeight:(CGFloat)height{
     CGRect frame = self.frame;
     if(!isnan(height)){
@@ -20,7 +21,7 @@
 - (CGFloat)height{
     return self.frame.size.height;
 }
-
+#pragma mark - Width Getter & Setter
 - (void)setWidth:(CGFloat)width{
     CGRect frame = self.frame;
     if(!isnan(width)){
@@ -32,7 +33,7 @@
 - (CGFloat)width{
     return self.frame.size.width;
 }
-
+#pragma mark - Bottom Getter & Setter
 - (CGFloat)bottom{
     return (self.frame.origin.y + self.frame.size.height);
 }
@@ -41,6 +42,43 @@
     CGRect frame = self.frame;
     if(!isnan(bottom)){
         frame.origin.y = bottom - frame.size.height;
+    }
+    self.frame = frame;
+}
+#pragma mark - Left Getter & Setter
+- (CGFloat)left{
+    return self.frame.origin.x;
+}
+
+- (void)setLeft:(CGFloat)left{
+    CGRect frame = self.frame;
+    if(!isnan(left)){
+        frame.origin.x = left;
+    }
+    self.frame = frame;
+}
+#pragma mark - Right Getter & Setter
+- (CGFloat)right{
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setRight:(CGFloat)right{
+    CGRect frame = self.frame;
+    if(!isnan(right)){
+        frame.origin.x = right - frame.size.width;
+    }
+    self.frame = frame;
+}
+
+#pragma mark - Point Getter & Setter
+- (CGPoint)point{
+    return CGPointMake(self.frame.origin.x, self.frame.origin.y);
+}
+
+- (void)setPoint:(CGPoint)point{
+    CGRect frame = self.frame;
+    if(!isnan(point.x) && !isnan(point.y)){
+        frame.origin = point;
     }
     self.frame = frame;
 }

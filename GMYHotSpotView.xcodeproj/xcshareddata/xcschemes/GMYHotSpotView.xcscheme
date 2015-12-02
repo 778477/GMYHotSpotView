@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8141E501A0FB7D28EFAC4FE8"
+               BlueprintIdentifier = "437805AB5C47A8A1088BE922"
                BuildableName = "libPods-GMYHotSpotView.a"
                BlueprintName = "Pods-GMYHotSpotView"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

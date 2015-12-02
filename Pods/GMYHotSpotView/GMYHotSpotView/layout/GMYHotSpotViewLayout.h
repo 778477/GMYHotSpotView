@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @class GMYHotSpotView;
+@protocol GMYHotSpot;
 typedef void(^eachLineCompletion)(NSInteger line,NSArray *fixedHotspots);
 @protocol GMYHotSpotViewLayout <NSObject>
 @required
 @property (nonatomic, weak) GMYHotSpotView *hotspotView;
 - (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion;
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView;
 - (CGFloat)calculateViewHeightWithHotSpot:(NSArray *)hotspots;
 @end

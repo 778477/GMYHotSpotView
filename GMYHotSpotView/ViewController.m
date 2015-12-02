@@ -72,6 +72,8 @@
     if(!_hotspotView1){
         _hotspotView1 = [[GMYHotSpotView alloc] initWithFrame:CGRectMake(5, self.hotspotView.bottom + 20, self.view.width - 10, self.view.height/2)
                                             hotspotViewLayout:[GMYHotSpotViewBetterLayout new]];
+        
+        _hotspotView1.backgroundColor = [UIColor blackColor];
     }
     return _hotspotView1;
 }

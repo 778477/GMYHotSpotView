@@ -7,8 +7,11 @@
 //
 
 #import "GMYHotSpotViewNormalLayout.h"
+#import "GMYHotSpotViewDefines.h"
 #import "GMYHotSpotView.h"
 #import "GMYHotSpot.h"
+#import "UIView+EX.h"
+
 @implementation GMYHotSpotViewNormalLayout
 @synthesize hotspotView = _hotspotView;
 #pragma mark - Override
@@ -42,6 +45,70 @@
         modelCount -= (fixedModels.count);
         [models removeObjectsInArray:fixedModels];
         [fixedModels removeAllObjects];
+    }
+}
+
+- (void)updateHotSpotViewLayoutByRemoveHotspot:(id<GMYHotSpot>)hotspot withRemovedSpot:(UIView *)spotView{
+    CGFloat offsetX = spotView.left;
+    CGFloat wellOff = _hotspotView.width - offsetX;
+    NSUInteger nowLine = hotspot.line;
+    NSUInteger endIndex = kGMYHotSpotViewTagBaseIndex + _hotspotView.subviews.count;
+    if(spotView.left - 0.f < 1e-6 && spotView.tag >= kGMYHotSpotViewTagBaseIndex+1){
+        UIView *front = [_hotspotView viewWithTag:spotView.tag - 1];
+        UIView *back = [_hotspotView viewWithTag:spotView.tag];
+        
+        if(_hotspotView.width - front.left - front.width - _hotspotView.minimumInteritemSpacing >= back.width){
+            --nowLine;
+            offsetX =  front.right + _hotspotView.minimumInteritemSpacing;
+            wellOff = _hotspotView.width - offsetX;
+        }
+    }
+    
+    for (NSUInteger idx = spotView.tag; idx < endIndex; idx++) {
+        UIView *btn = [_hotspotView viewWithTag:idx];
+        id<GMYHotSpot> model = _hotspotView.hotspots[idx - kGMYHotSpotViewTagBaseIndex];
+        if(model.line != nowLine){
+            if(wellOff >= btn.width){
+                [UIView animateWithDuration:0.3f animations:^{
+                    btn.point = CGPointMake(offsetX, nowLine*_hotspotView.buttonHeight+nowLine*_hotspotView.minimumLineSpacing);
+                }];
+                model.line = nowLine;
+            }
+            else{
+                if(btn.left - 0.f > 1e-6){
+                    --idx;
+                    offsetX = 0;
+                    wellOff = _hotspotView.width - offsetX;
+                    nowLine = model.line;
+                    continue;
+                }
+                else if(model.line - nowLine > 1){
+                    --idx;
+                    offsetX = 0;
+                    wellOff = _hotspotView.width - offsetX;
+                    nowLine++;
+                    continue;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        else{
+            [UIView animateWithDuration:0.3f animations:^{
+                btn.left = offsetX;
+            }];
+        }
+        offsetX += (btn.width + _hotspotView.minimumInteritemSpacing);
+        wellOff = _hotspotView.width - offsetX;
+    }
+    
+    if(_hotspotView.hotspots.count >= 1){
+        id<GMYHotSpot> lastHotSpot = [_hotspotView.hotspots lastObject];
+        _hotspotView.height = (lastHotSpot.line+1) * _hotspotView.buttonHeight + lastHotSpot.line*_hotspotView.minimumLineSpacing;
+    }
+    else{
+        _hotspotView.height = 0;
     }
 }
 
