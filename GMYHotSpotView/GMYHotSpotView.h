@@ -50,11 +50,11 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
  */
 @property (nonatomic, assign) NSInteger maxLines;
 /**
- *  热点点击回调
+ *  热点 点击回调
  */
 @property (nonatomic, copy) HotspotClickHandle clickHandle;
 /**
- *  数据源
+ *  热点数据源
  */
 @property (nonatomic, strong) NSMutableArray *hotspots;
 
