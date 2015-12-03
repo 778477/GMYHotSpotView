@@ -21,7 +21,6 @@
 ### 支持删除Tag 重新布局
 
 ![normal](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/normal.gif)
-
 ![better](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/better.gif)
 
 ### TODO List
