@@ -127,7 +127,7 @@ typedef unsigned long uInt64;
  *  @param hotspots   所有物品
  *  @param limitWidth 背包容量
  *
- *  @return 当前所有物品中 能放入背包且总价值最高
+ *  @return 当前所有物品中 能放入背包且总价值最高的 物品组合
  */
 - (NSArray *)adjustHotspotsSort:(NSArray *)hotspots limitWidth:(CGFloat)limitWidth{
     NSMutableArray *ans = [[NSMutableArray alloc] initWithCapacity:5];

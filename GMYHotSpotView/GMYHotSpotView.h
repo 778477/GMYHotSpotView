@@ -37,9 +37,13 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
  *  按钮之间的距离
  */
 @property (nonatomic, assign) CGFloat minimumInteritemSpacing;
-
+/**
+ *  按钮背景颜色
+ */
 @property (nonatomic, strong) UIColor *buttonBackgroundColor;
-
+/**
+ *  按钮标题文字颜色
+ */
 @property (nonatomic, strong) UIColor *buttonTitleColor;
 /**
  *  按钮标题到边框的距离
