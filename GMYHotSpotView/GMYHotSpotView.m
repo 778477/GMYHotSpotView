@@ -16,9 +16,6 @@
 
 @interface GMYHotSpotView()
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
-/**
- *  热点视图 当前状态(正常状态,编辑状态)
- */
 @property (nonatomic, assign) HotspotState state;
 @end
 @implementation GMYHotSpotView
@@ -48,7 +45,7 @@
 
 #pragma mark - Public Method
 - (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
-    [self p_clean];
+    [self clean];
     self.hotspots = [hotspots mutableCopy];
     _clickHandle = clickHandle;
     __block NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
@@ -120,7 +117,7 @@
         _clickHandle(sender.tag - kGMYHotSpotViewTagBaseIndex, spot.title);
     }
 }
-- (void)p_clean{
+- (void)clean{
     [self.hotspots removeAllObjects];
     [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];

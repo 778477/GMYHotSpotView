@@ -10,9 +10,17 @@
 @protocol GMYHotSpotViewLayout;
 
 typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
-
+/**
+ *  HotSpotView 状态
+ */
 typedef NS_ENUM(NSUInteger, HotspotState) {
+    /**
+     *  正常状态
+     */
     HotspotStateNormal = 0,
+    /**
+     *  编辑状态
+     */
     HotspotStateEditing,
 };
 
@@ -65,7 +73,13 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
 
 - (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle;
-
+/**
+ *  根据 hotspots 计算视图高度
+ *
+ *  @param hotspots 热点数据
+ *
+ *  @return 视图高度
+ */
 - (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots;
 @end
 
