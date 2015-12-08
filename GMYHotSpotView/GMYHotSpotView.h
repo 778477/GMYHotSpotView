@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @protocol GMYHotSpotViewLayout;
-
+@protocol GMYHotSpot;
 typedef void(^HotspotClickHandle)(NSInteger index,NSString *title);
 /**
  *  HotSpotView 状态
@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
 };
 
 @interface GMYHotSpotView : UIView
+@property (nonatomic, assign) BOOL igonreLongPress;
 /**
  *  按钮 标题文字的大小
  */
@@ -71,8 +72,13 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
 @property (nonatomic, strong) NSMutableArray *hotspots;
 
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
-
-- (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle;
+/**
+ *  更新热点视图
+ *
+ *  @param hotspots    热点数据 实现 GMYHotSpot 协议
+ *  @param clickHandle 点击热点回调
+ */
+- (void)updateHotSpotWithArray:(NSArray<id<GMYHotSpot>> *)hotspots ClickHandle:(HotspotClickHandle)clickHandle;
 /**
  *  根据 hotspots 计算视图高度
  *
@@ -80,6 +86,6 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
  *
  *  @return 视图高度
  */
-- (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots;
+- (CGFloat)calcluateViewHeightWithHotspots:(NSArray<id<GMYHotSpot>> *)hotspots;
 @end
 

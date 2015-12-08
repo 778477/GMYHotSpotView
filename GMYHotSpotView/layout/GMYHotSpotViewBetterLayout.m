@@ -17,7 +17,7 @@ typedef unsigned long uInt64;
 @implementation GMYHotSpotViewBetterLayout
 @synthesize hotspotView = _hotspotView;
 #pragma mark - Override
-- (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion{
+- (void)layoutHotSpotView:(NSArray<id<GMYHotSpot> > *)hotspots eachLineCompletion:(eachLineCompletion)completion{
     NSMutableArray *models = [NSMutableArray arrayWithArray:hotspots];
     NSInteger count = models.count;
     int line = 0;
@@ -27,10 +27,7 @@ typedef unsigned long uInt64;
         [_hotspotView.hotspots addObjectsFromArray:arr];
         [arr enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
             obj.line = line;
-            
-            printf("%s ",[obj.title UTF8String]);
         }];
-        printf("\n");
         completion(line,arr);
         line++;
         count -= arr.count;
@@ -59,9 +56,7 @@ typedef unsigned long uInt64;
         [rejusetViews addObject:view];
         offsetX += (view.width + _hotspotView.minimumInteritemSpacing);
         obj.line = nowLine;
-        printf("%s ",[obj.title UTF8String]);
     }];
-    printf("\n");
     nowLine++;
     offsetX = 0.f;
     [models removeObjectsInArray:adjustModels];
@@ -81,9 +76,7 @@ typedef unsigned long uInt64;
             [rejusetViews addObject:view];
             offsetX += (view.width + _hotspotView.minimumInteritemSpacing);
             obj.line = nowLine;
-            printf("%s ",[obj.title UTF8String]);
         }];
-         printf("\n");
         nowLine++;
         offsetX = 0.f;
         [models removeObjectsInArray:adjustModels];
@@ -132,7 +125,7 @@ typedef unsigned long uInt64;
 - (NSArray *)adjustHotspotsSort:(NSArray *)hotspots limitWidth:(CGFloat)limitWidth{
     NSMutableArray *ans = [[NSMutableArray alloc] initWithCapacity:5];
     /**
-     *  CGfloat to unsigned long lost accuracy
+     *  @Discussion 类型转换，存在 浮点数转整型丢失精度问题。
      */
     uInt64 v = limitWidth;
     uInt64 n = hotspots.count;
@@ -169,7 +162,6 @@ typedef unsigned long uInt64;
     
     Int64 val = dp[v];
     unsigned index = 0;
-    printf("value : %lld \n",val);
     while (val > 0) {
         for(int i=0;i<n;i++){
             if(path[val][i]){
@@ -179,9 +171,7 @@ typedef unsigned long uInt64;
         }
         [ans addObject:hotspots[index]];
         val -= weight[index];
-        printf("weights : %lu\n",weight[index]);
     }
-    printf("\n");
     
     free(value);
     free(weight);

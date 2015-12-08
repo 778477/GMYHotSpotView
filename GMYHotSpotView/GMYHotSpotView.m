@@ -19,7 +19,7 @@
 @property (nonatomic, assign) HotspotState state;
 @end
 @implementation GMYHotSpotView
-#pragma mark - Life cycle
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout{
     if(self =[super initWithFrame:frame]){
         _hotspotViewLayout = layout;
@@ -44,7 +44,7 @@
 }
 
 #pragma mark - Public Method
-- (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
+- (void)updateHotSpotWithArray:(NSArray<id<GMYHotSpot> > *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
     [self clean];
     self.hotspots = [hotspots mutableCopy];
     _clickHandle = clickHandle;
@@ -60,17 +60,19 @@
     self.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
 }
 
-- (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots{
+- (CGFloat)calcluateViewHeightWithHotspots:(NSArray<GMYHotSpot> *)hotspots{
     return [self.hotspotViewLayout calculateViewHeightWithHotSpot:hotspots];
 }
 
 
 // TODO
-- (void)layoutHotspots:(NSArray *)hotspots{
+- (void)layoutHotspots:(NSArray<id<GMYHotSpot> > *)hotspots{
     __block  CGFloat xOffset = 0.f;
     [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
         UIButton *button = [[UIButton alloc] init];
-        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]} context:nil].size;
+        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]} context:nil].size;
         button.frame = CGRectMake(xOffset, _minimumLineSpacing*MAX(0, obj.line) + obj.line*_buttonHeight, textSize.width + 2*_titleSpace, _buttonHeight);
         button.layer.borderWidth = 0.5f;
         button.layer.borderColor =[UIColor grayColor].CGColor;
@@ -124,6 +126,30 @@
     }];
 }
 #pragma mark - UILongPressGestureRecognizer Action
+- (void)setIgonreLongPress:(BOOL)igonreLongPress{
+    if(igonreLongPress){
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                [self removeGestureRecognizer:obj];
+                *stop = YES;
+            }
+        }];
+    }
+    else{
+        __block BOOL hasLongPress = NO;
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                hasLongPress = YES;
+                *stop = YES;
+            }
+        }];
+        
+        if(!hasLongPress){
+            [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)]];
+        }
+    }
+}
+
 - (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)GestureRecognizer{
     if(GestureRecognizer.state != UIGestureRecognizerStateBegan) return;
     self.state = !self.state;
