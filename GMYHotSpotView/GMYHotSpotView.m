@@ -17,6 +17,7 @@
 @interface GMYHotSpotView()
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
 @property (nonatomic, assign) HotspotState state;
+@property (nonatomic, strong) UIView *catchedView;
 @end
 @implementation GMYHotSpotView
 #pragma mark - Life Cycle
@@ -98,6 +99,8 @@
         
         [self addSubview:button];
         xOffset += (button.frame.size.width + _minimumInteritemSpacing);
+        
+        [button addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
     }];
 }
 #pragma mark - Private Mathod
@@ -105,6 +108,7 @@
     if(self.state == HotspotStateEditing){
         id <GMYHotSpot> hotspot = self.hotspots[sender.tag - kGMYHotSpotViewTagBaseIndex];
         [self.hotspots removeObject:hotspot];
+        [sender removeObserver:self forKeyPath:@"center"];
         [sender removeFromSuperview];
         NSInteger indexTag = sender.tag;
         while (indexTag + 1 <= kGMYHotSpotViewTagBaseIndex + self.hotspots.count) {
@@ -119,39 +123,8 @@
         _clickHandle(sender.tag - kGMYHotSpotViewTagBaseIndex, spot.title);
     }
 }
-- (void)clean{
-    [self.hotspots removeAllObjects];
-    [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-        [obj removeFromSuperview];
-    }];
-}
-#pragma mark - UILongPressGestureRecognizer Action
-- (void)setIgonreLongPress:(BOOL)igonreLongPress{
-    if(igonreLongPress){
-        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
-                [self removeGestureRecognizer:obj];
-                *stop = YES;
-            }
-        }];
-    }
-    else{
-        __block BOOL hasLongPress = NO;
-        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
-                hasLongPress = YES;
-                *stop = YES;
-            }
-        }];
-        
-        if(!hasLongPress){
-            [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)]];
-        }
-    }
-}
 
-- (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)GestureRecognizer{
-    if(GestureRecognizer.state != UIGestureRecognizerStateBegan) return;
+- (void)updateHotSpotViewState{
     self.state = !self.state;
     if(self.state == HotspotStateEditing){
         [self.subviews enumerateObjectsUsingBlock:^(UIButton* obj, NSUInteger idx, BOOL *stop) {
@@ -184,6 +157,93 @@
                 }
             }];
         }];
+    }
+}
+
+- (void)clean{
+    [self.hotspots removeAllObjects];
+    [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
+        [obj removeObserver:self forKeyPath:@"center"];
+        [obj removeFromSuperview];
+    }];
+}
+#pragma mark - UILongPressGestureRecognizer Action
+- (void)setIgonreLongPress:(BOOL)igonreLongPress{
+    if(igonreLongPress){
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                [self removeGestureRecognizer:obj];
+                *stop = YES;
+            }
+        }];
+    }
+    else{
+        __block BOOL hasLongPress = NO;
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                hasLongPress = YES;
+                *stop = YES;
+            }
+        }];
+        
+        if(!hasLongPress){
+            [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)]];
+        }
+    }
+}
+
+- (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)gestureRecognizer{
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:{
+            [self updateHotSpotViewState];
+            printf("Began\n");
+            CGPoint point =  [gestureRecognizer locationInView:self];
+            [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(CGRectContainsPoint(obj.frame,point)){
+                    
+                    obj.transform = CGAffineTransformMakeScale(1.2,1.2);
+                    [UIView animateWithDuration:0.3f animations:^{
+                        obj.transform = CGAffineTransformMakeScale(1,1);
+                    }];
+                    self.catchedView = obj;
+                    *stop = true;
+                }
+            }];
+            
+            break;
+        }
+        case UIGestureRecognizerStateChanged:{
+            printf("Changed\n");
+            self.catchedView.center = [gestureRecognizer locationInView:self];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:{
+            self.catchedView = nil;
+            printf("Ended\n");
+            break;
+        }
+        case UIGestureRecognizerStateCancelled:{
+            printf("Cancelled\n");
+            break;
+        }
+        case UIGestureRecognizerStateFailed:{
+            printf("Failed\n");
+            break;
+        }
+        case UIGestureRecognizerStatePossible:{
+            printf("Possible\n");
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - KVO Center
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if([keyPath isEqualToString:@"center"]){
+        NSValue *val = [change valueForKey:@"new"];
     }
 }
 
