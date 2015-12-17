@@ -1,3 +1,5 @@
+![shoot](https://raw.githubusercontent.com/778477/GMYHotSpotView/master/shoot.png)
+
 [![Build Status](https://travis-ci.org/778477/GMYHotSpotView.svg)](https://travis-ci.org/778477/GMYHotSpotView)
 
 
