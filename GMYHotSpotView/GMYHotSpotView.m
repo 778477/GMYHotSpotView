@@ -14,10 +14,13 @@
 #import "GMYImage.h"
 #import "GMYHotSpotViewDefines.h"
 
+static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
+
 @interface GMYHotSpotView()
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
 @property (nonatomic, assign) HotspotState state;
 @property (nonatomic, strong) UIView *catchedView;
+@property (nonatomic, assign) CGPoint savePoint;
 @end
 @implementation GMYHotSpotView
 #pragma mark - Life Cycle
@@ -195,17 +198,18 @@
 - (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)gestureRecognizer{
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
+//            printf("Began\n");
             [self updateHotSpotViewState];
-            printf("Began\n");
+            if(self.state == HotspotStateNormal) break;
             CGPoint point =  [gestureRecognizer locationInView:self];
             [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if(CGRectContainsPoint(obj.frame,point)){
-                    
-                    obj.transform = CGAffineTransformMakeScale(1.2,1.2);
-                    [UIView animateWithDuration:0.3f animations:^{
-                        obj.transform = CGAffineTransformMakeScale(1,1);
-                    }];
+                    self.savePoint = obj.point;
                     self.catchedView = obj;
+                    [UIView animateWithDuration:0.3f animations:^{
+                        obj.transform = CGAffineTransformMakeScale(1.05,1.05);
+                        obj.layer.zPosition = INT_MAX;
+                    }];
                     *stop = true;
                 }
             }];
@@ -213,25 +217,30 @@
             break;
         }
         case UIGestureRecognizerStateChanged:{
-            printf("Changed\n");
+//            printf("Changed\n");
             self.catchedView.center = [gestureRecognizer locationInView:self];
             break;
         }
         case UIGestureRecognizerStateEnded:{
+            [UIView animateWithDuration:0.3f animations:^{
+                self.catchedView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                self.catchedView.layer.zPosition = 0.f;
+                self.catchedView.point = self.savePoint;
+            }];
             self.catchedView = nil;
-            printf("Ended\n");
+//            printf("Ended\n");
             break;
         }
         case UIGestureRecognizerStateCancelled:{
-            printf("Cancelled\n");
+//            printf("Cancelled\n");
             break;
         }
         case UIGestureRecognizerStateFailed:{
-            printf("Failed\n");
+//            printf("Failed\n");
             break;
         }
         case UIGestureRecognizerStatePossible:{
-            printf("Possible\n");
+//            printf("Possible\n");
             break;
         }
             
@@ -243,7 +252,24 @@
 #pragma mark - KVO Center
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     if([keyPath isEqualToString:@"center"]){
-        NSValue *val = [change valueForKey:@"new"];
+        __block NSInteger rangerIdx = -1;
+        [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if(obj != self.catchedView){
+                CGFloat distance = sqrt((self.catchedView.center.x - obj.center.x)*(self.catchedView.center.x - obj.center.x) + (self.catchedView.center.y - obj.center.y)*(self.catchedView.center.y - obj.center.y));
+                
+                BOOL isVaild = self.width - obj.right > self.catchedView.width;
+                
+                if(distance - kGMYHotspotViewCenterLimit < 1e-6 && isVaild){
+                    printf("%lu",idx);
+                    rangerIdx = idx;
+                    *stop = YES;
+                }
+            }
+        }];
+        
+        if(rangerIdx != -1){
+            // TODO move
+        }
     }
 }
 
