@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7C6527264734A3ED84B537A4"
+               BlueprintIdentifier = "9846B93F30808276E20C27F7"
                BuildableName = "libPods-GMYHotSpotView-GMYHotSpotView.a"
                BlueprintName = "Pods-GMYHotSpotView-GMYHotSpotView"
                ReferencedContainer = "container:Pods.xcodeproj">

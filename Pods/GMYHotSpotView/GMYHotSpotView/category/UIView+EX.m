@@ -33,6 +33,18 @@
 - (CGFloat)width{
     return self.frame.size.width;
 }
+#pragma mark - Top Getter & Setter
+- (CGFloat)top{
+    return (self.frame.origin.y);
+}
+
+- (void)setTop:(CGFloat)top{
+    CGRect frame = self.frame;
+    if(!isnan(top)){
+        frame.origin.y = top;
+    }
+    self.frame = frame;
+}
 #pragma mark - Bottom Getter & Setter
 - (CGFloat)bottom{
     return (self.frame.origin.y + self.frame.size.height);

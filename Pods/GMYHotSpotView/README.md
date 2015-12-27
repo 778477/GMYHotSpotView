@@ -1,3 +1,5 @@
+![shoot](https://raw.githubusercontent.com/778477/GMYHotSpotView/master/shoot.png)
+
 [![Build Status](https://travis-ci.org/778477/GMYHotSpotView.svg)](https://travis-ci.org/778477/GMYHotSpotView)
 
 
@@ -18,6 +20,13 @@
 
 * 同样的GMYHotSpotView控件，上面使用的是normalLayout，下面使用的是BetterLayout。能对比发现 BetterLayout在布局方面比NormalLayout更为紧凑一些。数据差异(文案长度)越大，效果越明显。
 
+### 支持删除Tag 重新布局
+
+![normal](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/normal.gif)
+![better](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/better.gif)
 
 ### TODO List
-* 支持长按触发修改状态(可拖动，可删除）
+
+- [X] 支持长按触发修改状态 点击可删除
+
+ ~~- [ ] 支持长按触发修改状态 拖动修改顺序~~ 

@@ -14,15 +14,13 @@
 #import "GMYImage.h"
 #import "GMYHotSpotViewDefines.h"
 
+
 @interface GMYHotSpotView()
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
-/**
- *  热点视图 当前状态(正常状态,编辑状态)
- */
 @property (nonatomic, assign) HotspotState state;
 @end
 @implementation GMYHotSpotView
-#pragma mark - Life cycle
+#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout{
     if(self =[super initWithFrame:frame]){
         _hotspotViewLayout = layout;
@@ -47,9 +45,9 @@
 }
 
 #pragma mark - Public Method
-- (void)updateHotSpotWithArray:(NSArray *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
-    [self p_clean];
-    self.hotspots = [hotspots mutableCopy];
+- (void)updateHotSpotWithArray:(NSArray<id<GMYHotSpot> > *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
+    [self clean];
+    _hotspots = [hotspots mutableCopy];
     _clickHandle = clickHandle;
     __block NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
     
@@ -63,17 +61,18 @@
     self.height = MAX(0, finalLines - 1)*_minimumLineSpacing + (finalLines) * _buttonHeight;
 }
 
-- (CGFloat)calcluateViewHeightWithHotspots:(NSArray *)hotspots{
+- (CGFloat)calcluateViewHeightWithHotspots:(NSArray<GMYHotSpot> *)hotspots{
     return [self.hotspotViewLayout calculateViewHeightWithHotSpot:hotspots];
 }
 
 
-// TODO
-- (void)layoutHotspots:(NSArray *)hotspots{
+- (void)layoutHotspots:(NSArray<id<GMYHotSpot> > *)hotspots{
     __block  CGFloat xOffset = 0.f;
     [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
         UIButton *button = [[UIButton alloc] init];
-        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]} context:nil].size;
+        CGSize textSize = [obj.title boundingRectWithSize:CGSizeMake(self.frame.size.width, _buttonHeight)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:_fontSize]} context:nil].size;
         button.frame = CGRectMake(xOffset, _minimumLineSpacing*MAX(0, obj.line) + obj.line*_buttonHeight, textSize.width + 2*_titleSpace, _buttonHeight);
         button.layer.borderWidth = 0.5f;
         button.layer.borderColor =[UIColor grayColor].CGColor;
@@ -120,15 +119,8 @@
         _clickHandle(sender.tag - kGMYHotSpotViewTagBaseIndex, spot.title);
     }
 }
-- (void)p_clean{
-    [self.hotspots removeAllObjects];
-    [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-        [obj removeFromSuperview];
-    }];
-}
-#pragma mark - UILongPressGestureRecognizer Action
-- (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)GestureRecognizer{
-    if(GestureRecognizer.state != UIGestureRecognizerStateBegan) return;
+
+- (void)updateHotSpotViewState{
     self.state = !self.state;
     if(self.state == HotspotStateEditing){
         [self.subviews enumerateObjectsUsingBlock:^(UIButton* obj, NSUInteger idx, BOOL *stop) {
@@ -164,4 +156,40 @@
     }
 }
 
+- (void)clean{
+    [self.hotspots removeAllObjects];
+    [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
+        [obj removeFromSuperview];
+    }];
+}
+#pragma mark - UILongPressGestureRecognizer Action
+- (void)setIgonreLongPress:(BOOL)igonreLongPress{
+    if(igonreLongPress){
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                [self removeGestureRecognizer:obj];
+                *stop = YES;
+            }
+        }];
+    }
+    else{
+        __block BOOL hasLongPress = NO;
+        [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([obj isKindOfClass:[UILongPressGestureRecognizer class]]){
+                hasLongPress = YES;
+                *stop = YES;
+            }
+        }];
+        
+        if(!hasLongPress){
+            [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAtHotspotView:)]];
+        }
+    }
+}
+
+- (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)gestureRecognizer{
+    if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        [self updateHotSpotViewState];
+    }
+}
 @end

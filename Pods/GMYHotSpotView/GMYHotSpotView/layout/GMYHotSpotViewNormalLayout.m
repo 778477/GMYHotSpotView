@@ -15,7 +15,7 @@
 @implementation GMYHotSpotViewNormalLayout
 @synthesize hotspotView = _hotspotView;
 #pragma mark - Override
-- (void)layoutHotSpotView:(NSArray *)hotspots eachLineCompletion:(eachLineCompletion)completion{
+- (void)layoutHotSpotView:(NSArray<id<GMYHotSpot> > *)hotspots eachLineCompletion:(eachLineCompletion)completion{
     NSMutableArray *models = [NSMutableArray arrayWithArray:hotspots];
     NSMutableArray *fixedModels = [[NSMutableArray alloc] initWithCapacity:3];
     NSInteger modelCount = models.count;
