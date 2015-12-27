@@ -312,6 +312,7 @@
 /* Begin XCBuildConfiguration section */
 		E58934661B5BA332000265AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -347,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -356,6 +357,7 @@
 		};
 		E58934671B5BA332000265AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -384,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -422,6 +424,7 @@
 		};
 		E589346C1B5BA332000265AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D031E16B2281E76A52B1CE7 /* Pods-GMYHotSpotView.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -442,6 +445,7 @@
 		};
 		E589346D1B5BA332000265AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43B32BC68CF3C8951F923656 /* Pods-GMYHotSpotView.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
