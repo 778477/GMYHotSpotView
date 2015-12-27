@@ -14,13 +14,10 @@
 #import "GMYImage.h"
 #import "GMYHotSpotViewDefines.h"
 
-static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
 
 @interface GMYHotSpotView()
 @property (nonatomic, strong) id<GMYHotSpotViewLayout> hotspotViewLayout;
 @property (nonatomic, assign) HotspotState state;
-@property (nonatomic, strong) UIView *catchedView;
-@property (nonatomic, assign) CGPoint savePoint;
 @end
 @implementation GMYHotSpotView
 #pragma mark - Life Cycle
@@ -50,7 +47,7 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
 #pragma mark - Public Method
 - (void)updateHotSpotWithArray:(NSArray<id<GMYHotSpot> > *)hotspots ClickHandle:(HotspotClickHandle)clickHandle{
     [self clean];
-    self.hotspots = [hotspots mutableCopy];
+    _hotspots = [hotspots mutableCopy];
     _clickHandle = clickHandle;
     __block NSInteger finalLines = self.maxLines > 0 ? self.maxLines : hotspots.count;
     
@@ -69,7 +66,6 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
 }
 
 
-// TODO
 - (void)layoutHotspots:(NSArray<id<GMYHotSpot> > *)hotspots{
     __block  CGFloat xOffset = 0.f;
     [hotspots enumerateObjectsUsingBlock:^(id<GMYHotSpot> obj, NSUInteger idx, BOOL *stop) {
@@ -102,8 +98,6 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
         
         [self addSubview:button];
         xOffset += (button.frame.size.width + _minimumInteritemSpacing);
-        
-        [button addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:nil];
     }];
 }
 #pragma mark - Private Mathod
@@ -111,7 +105,6 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
     if(self.state == HotspotStateEditing){
         id <GMYHotSpot> hotspot = self.hotspots[sender.tag - kGMYHotSpotViewTagBaseIndex];
         [self.hotspots removeObject:hotspot];
-        [sender removeObserver:self forKeyPath:@"center"];
         [sender removeFromSuperview];
         NSInteger indexTag = sender.tag;
         while (indexTag + 1 <= kGMYHotSpotViewTagBaseIndex + self.hotspots.count) {
@@ -166,7 +159,6 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
 - (void)clean{
     [self.hotspots removeAllObjects];
     [self.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
-        [obj removeObserver:self forKeyPath:@"center"];
         [obj removeFromSuperview];
     }];
 }
@@ -196,81 +188,8 @@ static const CGFloat kGMYHotspotViewCenterLimit = 20.f;
 }
 
 - (void)longPressAtHotspotView:(UILongPressGestureRecognizer *)gestureRecognizer{
-    switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:{
-//            printf("Began\n");
-            [self updateHotSpotViewState];
-            if(self.state == HotspotStateNormal) break;
-            CGPoint point =  [gestureRecognizer locationInView:self];
-            [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if(CGRectContainsPoint(obj.frame,point)){
-                    self.savePoint = obj.point;
-                    self.catchedView = obj;
-                    [UIView animateWithDuration:0.3f animations:^{
-                        obj.transform = CGAffineTransformMakeScale(1.05,1.05);
-                        obj.layer.zPosition = INT_MAX;
-                    }];
-                    *stop = true;
-                }
-            }];
-            
-            break;
-        }
-        case UIGestureRecognizerStateChanged:{
-//            printf("Changed\n");
-            self.catchedView.center = [gestureRecognizer locationInView:self];
-            break;
-        }
-        case UIGestureRecognizerStateEnded:{
-            [UIView animateWithDuration:0.3f animations:^{
-                self.catchedView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-                self.catchedView.layer.zPosition = 0.f;
-                self.catchedView.point = self.savePoint;
-            }];
-            self.catchedView = nil;
-//            printf("Ended\n");
-            break;
-        }
-        case UIGestureRecognizerStateCancelled:{
-//            printf("Cancelled\n");
-            break;
-        }
-        case UIGestureRecognizerStateFailed:{
-//            printf("Failed\n");
-            break;
-        }
-        case UIGestureRecognizerStatePossible:{
-//            printf("Possible\n");
-            break;
-        }
-            
-        default:
-            break;
+    if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        [self updateHotSpotViewState];
     }
 }
-
-#pragma mark - KVO Center
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    if([keyPath isEqualToString:@"center"]){
-        __block NSInteger rangerIdx = -1;
-        [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if(obj != self.catchedView){
-                CGFloat distance = sqrt((self.catchedView.center.x - obj.center.x)*(self.catchedView.center.x - obj.center.x) + (self.catchedView.center.y - obj.center.y)*(self.catchedView.center.y - obj.center.y));
-                
-                BOOL isVaild = self.width - obj.right > self.catchedView.width;
-                
-                if(distance - kGMYHotspotViewCenterLimit < 1e-6 && isVaild){
-                    printf("%lu",idx);
-                    rangerIdx = idx;
-                    *stop = YES;
-                }
-            }
-        }];
-        
-        if(rangerIdx != -1){
-            // TODO move
-        }
-    }
-}
-
 @end

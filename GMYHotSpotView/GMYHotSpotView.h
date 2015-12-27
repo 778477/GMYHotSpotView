@@ -25,6 +25,9 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
 };
 
 @interface GMYHotSpotView : UIView
+/**
+ *  忽略长按手势
+ */
 @property (nonatomic, assign) BOOL igonreLongPress;
 /**
  *  按钮 标题文字的大小
@@ -69,8 +72,15 @@ typedef NS_ENUM(NSUInteger, HotspotState) {
 /**
  *  热点数据源
  */
-@property (nonatomic, strong) NSMutableArray *hotspots;
-
+@property (nonatomic, strong, readonly) NSMutableArray *hotspots;
+/**
+ *  初始化方法
+ *
+ *  @param frame  视图位置,大小
+ *  @param layout 布局方式
+ *
+ *  @return GMYHotSpotView 视图实例
+ */
 - (instancetype)initWithFrame:(CGRect)frame hotspotViewLayout:(id<GMYHotSpotViewLayout>)layout; //the designated initializer
 /**
  *  更新热点视图
