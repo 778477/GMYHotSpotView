@@ -15,4 +15,6 @@
 ### TODO List
 
 - [X] 支持长按触发修改状态 点击可删除
-![normal](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/normal.gif)![better](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/better.gif)
+
+![normal](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/normal.gif)
+![better](https://raw.githubusercontent.com/778477/GMYHotSpotView/66c54ba5d8b9ee427bfa13dc9ff6cf590a6c3253/better.gif)
