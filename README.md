@@ -1,6 +1,6 @@
 ![shoot](https://raw.githubusercontent.com/778477/GMYHotSpotView/master/shoot.png)
 
-[![Build Status](https://travis-ci.org/778477/GMYHotSpotView.svg)](https://travis-ci.org/778477/GMYHotSpotView)
+[![Build Status](https://travis-ci.org/778477/GMYHotSpotView.svg)](https://travis-ci.org/778477/GMYHotSpotView) ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg) ![iOS7](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)
 
 
 2015年7月26日 
